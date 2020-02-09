@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search> 
+  
+  
+    
+    <entry>
+      <title>helloworld_lai</title>
+      <link href="/2020/02/09/helloworld-lai/"/>
+      <url>/2020/02/09/helloworld-lai/</url>
+      
+        <content type="html"><![CDATA[]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Hello World</title>
+      <link href="/2020/02/09/hello-world/"/>
+      <url>/2020/02/09/hello-world/</url>
+      
+        <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p><h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p><h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p><h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p><h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/one-command-deployment.html" target="_blank" rel="noopener">Deployment</a></p>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>03-makefile</title>
+      <link href="/2020/02/04/03-makefile/"/>
+      <url>/2020/02/04/03-makefile/</url>
+      
+        <content type="html"><![CDATA[<h1 id="Makefile"><a href="#Makefile" class="headerlink" title="Makefile"></a>Makefile</h1><h2 id="VPATH的用法"><a href="#VPATH的用法" class="headerlink" title="VPATH的用法"></a>VPATH的用法</h2><ul><li>VPATH：虚路径<ul><li>在一些大的工程中，有大量的源文件，我们通常的做法是把这许多的源文件分类，并存放在不同的目录里。所以，当make需要去寻找文件的依赖关系时，你可以在文件前加上路径，但<code>最好的方法时把一个路径告诉make，让make自动去寻找</code>。</li><li>Makefile文件中的特殊变量”VPATH”就是完成这个功能的，如果没有指明这个变量，make只会在当前的目录中去找寻依赖文件和目标文件，到所指定的目录中去找寻文件了。</li><li><code>VPATH = src:../headers</code></li><li>上面的定义<code>指定两个目录</code>，<code>&quot;src&quot;</code>和<code>&quot;../headers&quot;</code>, make会按照这个顺序进行搜索，目录由”冒号”分隔。(当然，当前目录永远是最高优先搜索的地方)<h2 id="嵌套的Makefile"><a href="#嵌套的Makefile" class="headerlink" title="嵌套的Makefile"></a>嵌套的Makefile</h2></li></ul></li></ul>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>02-makefile</title>
+      <link href="/2020/02/04/02-makefile/"/>
+      <url>/2020/02/04/02-makefile/</url>
+      
+        <content type="html"><![CDATA[<h1 id="Makefile"><a href="#Makefile" class="headerlink" title="Makefile"></a>Makefile</h1><h2 id="make使用"><a href="#make使用" class="headerlink" title="make使用"></a>make使用</h2><ul><li>直接运行make</li><li>选项<ul><li>-C &#8195; dir读入指定目录下的Makefile</li><li>-f &#8195; file读入</li><li>-i &#8195; 忽略所有的命令执行错误</li><li>-I &#8195; dir指定被包含的Makefile所在目录</li><li>-n &#8195; 只打印要执行的命令，但不执行这些命令</li><li>-p &#8195; 显示make变量数据库和隐含规则</li><li>-s &#8195; 在执行命令时不显示命令</li><li>-w &#8195; 如果make在执行过程中改变目录，打印当前目录名</li></ul></li><li>makefile可以include + 文件名来引用其他文件中的内容<h2 id="Makefile的隐含规则"><a href="#Makefile的隐含规则" class="headerlink" title="Makefile的隐含规则"></a>Makefile的隐含规则</h2></li><li>隐含规则1：编译c程序的隐含规则<ul><li>“&lt;n&gt;.o”的目标的依赖目标会自动推导为”&lt;n&gt;.c”，并且其生成命令是”$(CC) -c $(CPPFLAGS) $(CFLAGS)”</li></ul></li><li>隐含规则2：链接Object文件的隐含规则<ul><li>“&lt;n&gt;”目标依赖于”&lt;n&gt;.o”，通过运行c的编译器来运行连接程序生成(一般是”ld”)，其生成命令是：”$(CC) $(LDFLAGS) &lt;n&gt;.o”</li><li>$(LOADLIBES) $(LDLIBS)。这个规则对于只有一个源文件的工程有效，同时也对多个Object文件(由不同的源文件生成)的也有效</li></ul></li></ul>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>01-MakeFile</title>
+      <link href="/2020/02/04/01-makefile/"/>
+      <url>/2020/02/04/01-makefile/</url>
+      
+        <content type="html"><![CDATA[<h1 id="Makefile"><a href="#Makefile" class="headerlink" title="Makefile"></a>Makefile</h1><h2 id="Make简介"><a href="#Make简介" class="headerlink" title="Make简介"></a>Make简介</h2><ul><li>工程管理器，顾名思义，是指管理较多得文件</li><li>Make工程管理器也就是个<code>自动编译管理器</code>，这里得<code>自动</code>是指它能够根据文件时间戳<code>自动发现</code>更新过得文件而减少编译得工作量，同时，它通过读入Makefile文件得内容来执行大量得编译工作。</li><li><code>Make将只编译改动的代码文件，而不用完全编译</code><h2 id="Makefile基本结构"><a href="#Makefile基本结构" class="headerlink" title="Makefile基本结构"></a>Makefile基本结构</h2></li><li><code>Makefile</code>是Make读入的唯一配置文件<ul><li>由make工具创建的目标体(<code>target</code>)，通常是目标文件或可执行文件</li><li>要创建的目标体所依赖的文件(<code>dependency_file</code>)</li><li>创建每个目标体时需要运行的命令(<code>command</code>)</li><li><code>注意：</code>命令行前面必须是一个”<code>TAB</code>键”，否则编译错误</li></ul></li><li>Makefile格式  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">target : dependency_files</span><br><span class="line">&lt;TAB&gt; command</span><br></pre></td></tr></table></figure></li><li>例子  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">hello : hello.c hello.h</span><br><span class="line">    gcc -c hello.c -o hello.o</span><br></pre></td></tr></table></figure></li><li>更复杂的例子  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">sunq : kang.o yul.o</span><br><span class="line">    gcc kang.o yul.o -o sunq</span><br><span class="line">kang.o : kang.c kang.h</span><br><span class="line">    gcc -Wall -O -g -c kang.c -o kang.o</span><br><span class="line">yul : yul.c</span><br><span class="line">    gcc -Wall -O -g -c yul.c -o yul.o</span><br></pre></td></tr></table></figure></li><li>注释：<ul><li>-WALL表示允许发出gcc所有有用的报警信息</li><li>-c只是编译不链接，生成目标文件”.o”</li><li>-o file:表示把输出文件输出到file里<h2 id="创建和使用变量"><a href="#创建和使用变量" class="headerlink" title="创建和使用变量"></a>创建和使用变量</h2></li></ul></li><li>创建变量的目的：</li><li>用来代替一个文本字符串：  <ol><li>系列<code>文件的名字</code></li><li>传递给编译器的<code>参数</code></li><li>需要<code>运行的程序</code></li><li>需要查找<code>源代码的目录</code></li><li>你需要输出<code>信息的目录</code></li><li>你想做的其他事情</li></ol></li><li>变量定义的两种方式<ul><li>递归展开方式<code>VAR=var</code></li><li>简单方式<code>VAR:=var</code></li></ul></li><li>变量使用<code>$(VAR)</code></li><li>用<code>$</code>则用<code>$$</code>来表示</li><li>类似于编程语言中的宏定义</li><li>刚才的例子：  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">foo&#x3D;$(bar)</span><br><span class="line">bar&#x3D;$(ugh)</span><br><span class="line">ugh&#x3D;Huh?</span><br><span class="line">$(foo)的值为?</span><br><span class="line">echo $(foo)来进行查看</span><br></pre></td></tr></table></figure><ul><li>优点：它可以向后引用变量</li><li>缺点：不能对该变量进行任何扩展</li></ul></li><li>用?=定义变量<br>&#8195;dir:=/foo/bar<br>&#8195;FOO?=bar<br>&#8195;FOO是?  <code>FOO之前没被定义过则被定义为bar</code></li><li>预定义变量<ul><li>AR &#8195; 库文件维护程序的名称，默认值为ar</li><li>CC &#8195; <code>C编译器</code>的名称，默认值为cc。CPP&#8195;C预编译器的名称，默认值为$(CC) -E</li><li>CXX &#8195; <code>C++编译器</code>的名称，默认值为g++</li><li>FC &#8195; <code>FORTRAN编译器</code>的名称，默认值为f77</li><li>RM &#8195; <code>文件删除</code>程序的名称，默认值为rm -f</li></ul></li><li>自动变量<ul><li>$* &#8195; <code>不包含扩展名</code>的目标文件名称</li><li>$+ &#8195; <code>所有的依赖文件</code>，以空格分开，并以出现的先后为序，可能包含重复的依赖文件</li><li>$&lt; &#8195; <code>第一个依赖文件</code>的名称</li><li>$? &#8195; <code>所有时间戳比目标文件晚的依赖文件</code>，并以空格分开</li><li>$@ &#8195; 目标文件的<code>完整名称</code></li><li>$^ &#8195; 所有<code>不重复的目标依赖文件</code>，以空格分开</li><li>$% &#8195; 如果目标是归档成员，则改变量表示目标的归档成员名称</li></ul></li><li>刚才的例子：  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">OBJS &#x3D; kang.o yul.o</span><br><span class="line">CC &#x3D; gcc</span><br><span class="line">CFLAGS &#x3D; -Wall -O -g</span><br><span class="line">sunq : $(OBJS)</span><br><span class="line">    $(CC) $^ -o $@</span><br><span class="line">kang.o : kang.c kang.h</span><br><span class="line">    $(CC) $(CFLAGS) -c $&lt; -o $@</span><br><span class="line">yul.o : yul.c yul.h</span><br><span class="line">    $(CC) $(CFLAGS) -c $&lt; -o $@</span><br></pre></td></tr></table></figure></li><li>环境变量<ul><li>make在启动时会自动读取系统当前已经定义了的环境变量，而且会创建与之具有相同名称和数值的变量</li><li>如果用户在Makefile中定义了相同名称的变量，那么用户自定义变量将会覆盖同名的环境变量</li></ul></li></ul>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+  
+  
+</search>
