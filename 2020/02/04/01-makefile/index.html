@@ -20,27 +20,31 @@
     var CONFIG = {"hostname":"yoursite.com","root":"/","scheme":"Muse","version":"7.7.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://yoursite.com/index.html">
+  <meta name="description" content="MakefileMake简介 工程管理器，顾名思义，是指管理较多得文件 Make工程管理器也就是个自动编译管理器，这里得自动是指它能够根据文件时间戳自动发现更新过得文件而减少编译得工作量，同时，它通过读入Makefile文件得内容来执行大量得编译工作。 Make将只编译改动的代码文件，而不用完全编译Makefile基本结构 Makefile是Make读入的唯一配置文件 由make工具创建的目标体(">
+<meta property="og:type" content="article">
+<meta property="og:title" content="01-makefile">
+<meta property="og:url" content="http://yoursite.com/2020/02/04/01-makefile/index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="MakefileMake简介 工程管理器，顾名思义，是指管理较多得文件 Make工程管理器也就是个自动编译管理器，这里得自动是指它能够根据文件时间戳自动发现更新过得文件而减少编译得工作量，同时，它通过读入Makefile文件得内容来执行大量得编译工作。 Make将只编译改动的代码文件，而不用完全编译Makefile基本结构 Makefile是Make读入的唯一配置文件 由make工具创建的目标体(">
 <meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2020-02-04T10:27:54.000Z">
+<meta property="article:modified_time" content="2020-02-04T13:24:51.000Z">
 <meta property="article:author" content="Huihang Lai">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="http://yoursite.com/">
+<link rel="canonical" href="http://yoursite.com/2020/02/04/01-makefile/">
 
 
 <script id="page-configurations">
   // https://hexo.io/docs/variables.html
   CONFIG.page = {
     sidebar: "",
-    isHome: true,
-    isPost: false
+    isHome: false,
+    isPost: true
   };
 </script>
 
-  <title>Hexo</title>
+  <title>01-makefile | Hexo</title>
   
 
 
@@ -135,292 +139,10 @@
             
 
   <div class="posts-expand">
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/02/09/helloworld-lai/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Huihang Lai">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Hexo">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/02/09/helloworld-lai/" class="post-title-link" itemprop="url">helloworld_lai</a>
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2020-02-09 10:31:53" itemprop="dateCreated datePublished" datetime="2020-02-09T10:31:53+08:00">2020-02-09</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
       
-          
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
   
   
-  
-
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/02/09/hello-world/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Huihang Lai">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Hexo">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/02/09/hello-world/" class="post-title-link" itemprop="url">Hello World</a>
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2020-02-09 09:56:22" itemprop="dateCreated datePublished" datetime="2020-02-09T09:56:22+08:00">2020-02-09</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html" target="_blank" rel="noopener">Deployment</a></p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/02/04/03-makefile/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Huihang Lai">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Hexo">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/02/04/03-makefile/" class="post-title-link" itemprop="url">03-makefile</a>
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2020-02-04 23:11:23" itemprop="dateCreated datePublished" datetime="2020-02-04T23:11:23+08:00">2020-02-04</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2020-02-05 00:09:16" itemprop="dateModified" datetime="2020-02-05T00:09:16+08:00">2020-02-05</time>
-              </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="Makefile"><a href="#Makefile" class="headerlink" title="Makefile"></a>Makefile</h1><h2 id="VPATH的用法"><a href="#VPATH的用法" class="headerlink" title="VPATH的用法"></a>VPATH的用法</h2><ul>
-<li>VPATH：虚路径<ul>
-<li>在一些大的工程中，有大量的源文件，我们通常的做法是把这许多的源文件分类，并存放在不同的目录里。所以，当make需要去寻找文件的依赖关系时，你可以在文件前加上路径，但<code>最好的方法时把一个路径告诉make，让make自动去寻找</code>。</li>
-<li>Makefile文件中的特殊变量”VPATH”就是完成这个功能的，如果没有指明这个变量，make只会在当前的目录中去找寻依赖文件和目标文件，到所指定的目录中去找寻文件了。</li>
-<li><code>VPATH = src:../headers</code></li>
-<li>上面的定义<code>指定两个目录</code>，<code>&quot;src&quot;</code>和<code>&quot;../headers&quot;</code>, make会按照这个顺序进行搜索，目录由”冒号”分隔。(当然，当前目录永远是最高优先搜索的地方)<h2 id="嵌套的Makefile"><a href="#嵌套的Makefile" class="headerlink" title="嵌套的Makefile"></a>嵌套的Makefile</h2></li>
-</ul>
-</li>
-</ul>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/02/04/02-makefile/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Huihang Lai">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Hexo">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/02/04/02-makefile/" class="post-title-link" itemprop="url">02-makefile</a>
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-              
-
-              <time title="Created: 2020-02-04 21:31:22 / Modified: 23:12:27" itemprop="dateCreated datePublished" datetime="2020-02-04T21:31:22+08:00">2020-02-04</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="Makefile"><a href="#Makefile" class="headerlink" title="Makefile"></a>Makefile</h1><h2 id="make使用"><a href="#make使用" class="headerlink" title="make使用"></a>make使用</h2><ul>
-<li>直接运行make</li>
-<li>选项<ul>
-<li>-C &#8195; dir读入指定目录下的Makefile</li>
-<li>-f &#8195; file读入</li>
-<li>-i &#8195; 忽略所有的命令执行错误</li>
-<li>-I &#8195; dir指定被包含的Makefile所在目录</li>
-<li>-n &#8195; 只打印要执行的命令，但不执行这些命令</li>
-<li>-p &#8195; 显示make变量数据库和隐含规则</li>
-<li>-s &#8195; 在执行命令时不显示命令</li>
-<li>-w &#8195; 如果make在执行过程中改变目录，打印当前目录名</li>
-</ul>
-</li>
-<li>makefile可以include + 文件名来引用其他文件中的内容<h2 id="Makefile的隐含规则"><a href="#Makefile的隐含规则" class="headerlink" title="Makefile的隐含规则"></a>Makefile的隐含规则</h2></li>
-<li>隐含规则1：编译c程序的隐含规则<ul>
-<li>“&lt;n&gt;.o”的目标的依赖目标会自动推导为”&lt;n&gt;.c”，并且其生成命令是”$(CC) -c $(CPPFLAGS) $(CFLAGS)”</li>
-</ul>
-</li>
-<li>隐含规则2：链接Object文件的隐含规则<ul>
-<li>“&lt;n&gt;”目标依赖于”&lt;n&gt;.o”，通过运行c的编译器来运行连接程序生成(一般是”ld”)，其生成命令是：”$(CC) $(LDFLAGS) &lt;n&gt;.o”</li>
-<li>$(LOADLIBES) $(LDLIBS)。这个规则对于只有一个源文件的工程有效，同时也对多个Object文件(由不同的源文件生成)的也有效</li>
-</ul>
-</li>
-</ul>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="en">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/02/04/01-makefile/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -434,8 +156,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/02/04/01-makefile/" class="post-title-link" itemprop="url">01-makefile</a>
+          01-makefile
         </h1>
 
         <div class="post-meta">
@@ -460,7 +181,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h1 id="Makefile"><a href="#Makefile" class="headerlink" title="Makefile"></a>Makefile</h1><h2 id="Make简介"><a href="#Make简介" class="headerlink" title="Make简介"></a>Make简介</h2><ul>
+        <h1 id="Makefile"><a href="#Makefile" class="headerlink" title="Makefile"></a>Makefile</h1><h2 id="Make简介"><a href="#Make简介" class="headerlink" title="Make简介"></a>Make简介</h2><ul>
 <li>工程管理器，顾名思义，是指管理较多得文件</li>
 <li>Make工程管理器也就是个<code>自动编译管理器</code>，这里得<code>自动</code>是指它能够根据文件时间戳<code>自动发现</code>更新过得文件而减少编译得工作量，同时，它通过读入Makefile文件得内容来执行大量得编译工作。</li>
 <li><code>Make将只编译改动的代码文件，而不用完全编译</code><h2 id="Makefile基本结构"><a href="#Makefile基本结构" class="headerlink" title="Makefile基本结构"></a>Makefile基本结构</h2></li>
@@ -531,24 +252,33 @@
 </li>
 </ul>
 
-      
     </div>
 
     
     
     
+
       <footer class="post-footer">
-        <div class="post-eof"></div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item"></div>
+      <div class="post-nav-item">
+    <a href="/2020/02/04/02-makefile/" rel="next" title="02-makefile">
+      02-makefile <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
       </footer>
+    
   </article>
   
   
   
 
   </div>
-
-  
-
 
 
           </div>
@@ -599,6 +329,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Makefile"><span class="nav-number">1.</span> <span class="nav-text">Makefile</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Make简介"><span class="nav-number">1.1.</span> <span class="nav-text">Make简介</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Makefile基本结构"><span class="nav-number">1.2.</span> <span class="nav-text">Makefile基本结构</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#创建和使用变量"><span class="nav-number">1.3.</span> <span class="nav-text">创建和使用变量</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
