@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   
-  <title>03-makefile | 嵌入式从业人员的blog</title>
+  <title>所有标签 | 嵌入式从业人员的blog</title>
   
   
 
@@ -213,271 +213,40 @@
 
   <div class="l_body nocover">
     <div class='body-wrapper'>
-      <div class='l_main'>
+      
+<div class='l_main'>
   
-
-  <article id="post" class="post white-box article-type-post" itemscope itemprop="blogPost">
     
-
-
-  <section class='meta'>
-    
-    
-    <div class="meta" id="header-meta">
-      
-        
-  
-    <h1 class="title">
-      <a href="/2020/02/04/03-makefile/">
-        03-makefile
-      </a>
-    </h1>
-  
-
-
-      
-      <div class='new-meta-box'>
-        
-          
-        
-          
-            
-  <div class='new-meta-item author'>
-    
-      <a href="http://yoursite.com" rel="nofollow">
-        
-          <i class="fas fa-user" aria-hidden="true"></i>
-        
-        <p>Huihang Lai</p>
-      </a>
-    
-  </div>
-
-
-          
-        
-          
-            <div class="new-meta-item date">
-  <a class='notlink'>
-    <i class="fas fa-calendar-alt" aria-hidden="true"></i>
-    <p>2020-02-04</p>
-  </a>
-</div>
-
-          
-        
-          
-            
-
-          
-        
-          
-            
-  
-    <div class="new-meta-item browse busuanzi">
-      <a class='notlink'>
-        <i class="fas fa-eye" aria-hidden="true"></i>
-        <p>
-          <span id="busuanzi_value_page_pv">
-            <i class="fas fa-spinner fa-spin fa-fw" aria-hidden="true"></i>
-          </span>
-        </p>
-      </a>
-    </div>
-  
-
-
-          
-        
-          
-            
-  
-    <div class="new-meta-item wordcount">
-      <a class='notlink'>
-        <i class="fas fa-keyboard" aria-hidden="true"></i>
-        <p>字数统计:</p>
-        <p>228字</p>
-      </a>
-    </div>
-    <div class="new-meta-item readtime">
-      <a class='notlink'>
-        <i class="fas fa-hourglass-half" aria-hidden="true"></i>
-        <p>阅读时长≈</p>
-        <p>1分</p>
-      </a>
-    </div>
-  
-
-          
-        
-          
-            
-
-          
-        
-      </div>
-      
-        <hr>
-      
-    </div>
-  </section>
-
-
-    <section class="article typo">
-      <div class="article-entry" itemprop="articleBody">
-        <h1 id="Makefile"><a href="#Makefile" class="headerlink" title="Makefile"></a>Makefile</h1><h2 id="VPATH的用法"><a href="#VPATH的用法" class="headerlink" title="VPATH的用法"></a>VPATH的用法</h2><ul>
-<li>VPATH：虚路径<ul>
-<li>在一些大的工程中，有大量的源文件，我们通常的做法是把这许多的源文件分类，并存放在不同的目录里。所以，当make需要去寻找文件的依赖关系时，你可以在文件前加上路径，但<code>最好的方法时把一个路径告诉make，让make自动去寻找</code>。</li>
-<li>Makefile文件中的特殊变量”VPATH”就是完成这个功能的，如果没有指明这个变量，make只会在当前的目录中去找寻依赖文件和目标文件，到所指定的目录中去找寻文件了。</li>
-<li><code>VPATH = src:../headers</code></li>
-<li>上面的定义<code>指定两个目录</code>，<code>&quot;src&quot;</code>和<code>&quot;../headers&quot;</code>, make会按照这个顺序进行搜索，目录由”冒号”分隔。(当然，当前目录永远是最高优先搜索的地方)<h2 id="嵌套的Makefile"><a href="#嵌套的Makefile" class="headerlink" title="嵌套的Makefile"></a>嵌套的Makefile</h2></li>
-</ul>
-</li>
-</ul>
-
-      </div>
-      
-        <br>
-        <center>这是文章页脚，可以设置打赏图片：<br><fancybox>![](https://img.vim-cn.com/4a/5f8244a7c6e1e069a781b84ed11008e7955e16.png)</fancybox></center>
-      
-      
-        <br>
-        
-
-
-  <section class='meta' id="footer-meta">
-    <div class='new-meta-box'>
-      
-        
-          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-02-05T00:09:16+08:00">
-  <a class='notlink'>
-    <i class="fas fa-clock" aria-hidden="true"></i>
-    <p>更新于 2020年2月5日</p>
-  </a>
-</div>
-
-        
-      
-        
-          
-
-        
-      
-        
-          
-  <div class="new-meta-item share -mob-share-list">
-  <div class="-mob-share-list share-body">
-    
-      
-        <a class="-mob-share-qq" title="QQ好友" rel="external nofollow noopener noreferrer"
-          
-          href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/2020/02/04/03-makefile/&title=03-makefile | 嵌入式从业人员的blog&summary="
-          
-          >
-          
-            <img src="https://cdn.jsdelivr.net/gh/xaoxuu/assets@19.1.9/logo/128/qq.png">
-          
-        </a>
-      
-    
-      
-        <a class="-mob-share-qzone" title="QQ空间" rel="external nofollow noopener noreferrer"
-          
-          href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=http://yoursite.com/2020/02/04/03-makefile/&title=03-makefile | 嵌入式从业人员的blog&summary="
-          
-          >
-          
-            <img src="https://cdn.jsdelivr.net/gh/xaoxuu/assets@19.1.9/logo/128/qzone.png">
-          
-        </a>
-      
-    
-      
-        <a class="-mob-share-weibo" title="微博" rel="external nofollow noopener noreferrer"
-          
-          href="http://service.weibo.com/share/share.php?url=http://yoursite.com/2020/02/04/03-makefile/&title=03-makefile | 嵌入式从业人员的blog&summary="
-          
-          >
-          
-            <img src="https://cdn.jsdelivr.net/gh/xaoxuu/assets@19.1.9/logo/128/weibo.png">
-          
-        </a>
-      
-    
-  </div>
-</div>
-
-
-
-        
-      
-    </div>
-  </section>
-
-
-      
-      
-          <div class="prev-next">
+      <section class="post-list">
+        <div class='post-wrapper'>
+          <article id="archive-page" class="post article white-box">
+            <section class="archive">
+              <div class="archive-item archive-year mark">
+                <h2>所有标签</h2>
+                <hr>
+              </div>
+              <div class="archive-item archive-post mark">
+                
+                  
+                    
+                      <a class="" href="/tags/makefile/">
+                        <time><i class='fas fa-tag fa-fw' aria-hidden="true"></i>&nbsp;&nbsp;makefile</time>
+                        <span class="title">
+                          (1)
+                        </span>
+                      </a>
+                    
+                  
+                
+              </div>
+              <br>
               
-                  <section class="prev">
-                      <span class="art-item-left">
-                          <h6><i class="fas fa-chevron-left" aria-hidden="true"></i>&nbsp;上一页</h6>
-                          <h4>
-                              <a href="/2020/02/09/hello-world/" rel="prev" title="Hello World">
-                                
-                                    Hello World
-                                
-                              </a>
-                          </h4>
-                          
-                      </span>
-                  </section>
-              
-              
-                  <section class="next">
-                      <span class="art-item-right" aria-hidden="true">
-                          <h6>下一页&nbsp;<i class="fas fa-chevron-right" aria-hidden="true"></i></h6>
-                          <h4>
-                              <a href="/2020/02/04/02-makefile/" rel="prev" title="02-makefile">
-                                  
-                                      02-makefile
-                                  
-                              </a>
-                          </h4>
-                          
-                      </span>
-                  </section>
-              
-          </div>
-      
-    </section>
-  </article>
-
-
-
-  <!-- 显示推荐文章和评论 -->
-
-
-
+            </section>
+          </article>
+        </div>
+      </section>
+    
   
-
-
-
-
-
-
-<!-- 根据页面mathjax变量决定是否加载MathJax数学公式js -->
-
-
-
-  <script>
-    window.subData = {
-      title: '03-makefile',
-      tools: true
-    }
-  </script>
-
-
 </div>
 <aside class='l_side'>
   
