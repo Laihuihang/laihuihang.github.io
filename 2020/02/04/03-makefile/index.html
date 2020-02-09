@@ -208,7 +208,7 @@
         
   
     <h1 class="title">
-      <a href="/2020/02/09/01-makefile/">
+      <a href="/2020/02/04/03-makefile/">
         laihuihang
       </a>
     </h1>
@@ -240,7 +240,7 @@
             <div class="new-meta-item date">
   <a class='notlink'>
     <i class="fas fa-calendar-alt" aria-hidden="true"></i>
-    <p>2020-02-09</p>
+    <p>2020-02-04</p>
   </a>
 </div>
 
@@ -284,14 +284,14 @@
       <a class='notlink'>
         <i class="fas fa-keyboard" aria-hidden="true"></i>
         <p>字数统计:</p>
-        <p>877字</p>
+        <p>228字</p>
       </a>
     </div>
     <div class="new-meta-item readtime">
       <a class='notlink'>
         <i class="fas fa-hourglass-half" aria-hidden="true"></i>
         <p>阅读时长≈</p>
-        <p>3分</p>
+        <p>1分</p>
       </a>
     </div>
   
@@ -313,73 +313,12 @@
 
     <section class="article typo">
       <div class="article-entry" itemprop="articleBody">
-        <h1 id="Makefile"><a href="#Makefile" class="headerlink" title="Makefile"></a>Makefile</h1><h2 id="Make简介"><a href="#Make简介" class="headerlink" title="Make简介"></a>Make简介</h2><ul>
-<li>工程管理器，顾名思义，是指管理较多得文件</li>
-<li>Make工程管理器也就是个<code>自动编译管理器</code>，这里得<code>自动</code>是指它能够根据文件时间戳<code>自动发现</code>更新过得文件而减少编译得工作量，同时，它通过读入Makefile文件得内容来执行大量得编译工作。</li>
-<li><code>Make将只编译改动的代码文件，而不用完全编译</code><h2 id="Makefile基本结构"><a href="#Makefile基本结构" class="headerlink" title="Makefile基本结构"></a>Makefile基本结构</h2></li>
-<li><code>Makefile</code>是Make读入的唯一配置文件<ul>
-<li>由make工具创建的目标体(<code>target</code>)，通常是目标文件或可执行文件</li>
-<li>要创建的目标体所依赖的文件(<code>dependency_file</code>)</li>
-<li>创建每个目标体时需要运行的命令(<code>command</code>)</li>
-<li><code>注意：</code>命令行前面必须是一个”<code>TAB</code>键”，否则编译错误</li>
-</ul>
-</li>
-<li>Makefile格式  <figure class="highlight livecodeserver"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">target : dependency_files</span><br><span class="line">&lt;<span class="literal">TAB</span>&gt; <span class="keyword">command</span></span><br></pre></td></tr></table></figure></li>
-<li>例子  <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">hello</span> : <span class="selector-tag">hello</span><span class="selector-class">.c</span> <span class="selector-tag">hello</span><span class="selector-class">.h</span></span><br><span class="line">    <span class="selector-tag">gcc</span> <span class="selector-tag">-c</span> <span class="selector-tag">hello</span><span class="selector-class">.c</span> <span class="selector-tag">-o</span> <span class="selector-tag">hello</span><span class="selector-class">.o</span></span><br></pre></td></tr></table></figure></li>
-<li>更复杂的例子  <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">sunq</span> : <span class="selector-tag">kang</span><span class="selector-class">.o</span> <span class="selector-tag">yul</span><span class="selector-class">.o</span></span><br><span class="line">    <span class="selector-tag">gcc</span> <span class="selector-tag">kang</span><span class="selector-class">.o</span> <span class="selector-tag">yul</span><span class="selector-class">.o</span> <span class="selector-tag">-o</span> <span class="selector-tag">sunq</span></span><br><span class="line"><span class="selector-tag">kang</span><span class="selector-class">.o</span> : <span class="selector-tag">kang</span><span class="selector-class">.c</span> <span class="selector-tag">kang</span><span class="selector-class">.h</span></span><br><span class="line">    <span class="selector-tag">gcc</span> <span class="selector-tag">-Wall</span> <span class="selector-tag">-O</span> <span class="selector-tag">-g</span> <span class="selector-tag">-c</span> <span class="selector-tag">kang</span><span class="selector-class">.c</span> <span class="selector-tag">-o</span> <span class="selector-tag">kang</span><span class="selector-class">.o</span></span><br><span class="line"><span class="selector-tag">yul</span> : <span class="selector-tag">yul</span><span class="selector-class">.c</span></span><br><span class="line">    <span class="selector-tag">gcc</span> <span class="selector-tag">-Wall</span> <span class="selector-tag">-O</span> <span class="selector-tag">-g</span> <span class="selector-tag">-c</span> <span class="selector-tag">yul</span><span class="selector-class">.c</span> <span class="selector-tag">-o</span> <span class="selector-tag">yul</span><span class="selector-class">.o</span></span><br></pre></td></tr></table></figure></li>
-<li>注释：<ul>
-<li>-WALL表示允许发出gcc所有有用的报警信息</li>
-<li>-c只是编译不链接，生成目标文件”.o”</li>
-<li>-o file:表示把输出文件输出到file里<h2 id="创建和使用变量"><a href="#创建和使用变量" class="headerlink" title="创建和使用变量"></a>创建和使用变量</h2></li>
-</ul>
-</li>
-<li>创建变量的目的：</li>
-<li>用来代替一个文本字符串：  <ol>
-<li>系列<code>文件的名字</code></li>
-<li>传递给编译器的<code>参数</code></li>
-<li>需要<code>运行的程序</code></li>
-<li>需要查找<code>源代码的目录</code></li>
-<li>你需要输出<code>信息的目录</code></li>
-<li>你想做的其他事情</li>
-</ol>
-</li>
-<li>变量定义的两种方式<ul>
-<li>递归展开方式<code>VAR=var</code></li>
-<li>简单方式<code>VAR:=var</code></li>
-</ul>
-</li>
-<li>变量使用<code>$(VAR)</code></li>
-<li>用<code>$</code>则用<code>$$</code>来表示</li>
-<li>类似于编程语言中的宏定义</li>
-<li>刚才的例子：  <figure class="highlight reasonml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">foo=<span class="constructor">$(<span class="params">bar</span>)</span></span><br><span class="line">bar=<span class="constructor">$(<span class="params">ugh</span>)</span></span><br><span class="line">ugh=Huh?</span><br><span class="line"><span class="constructor">$(<span class="params">foo</span>)</span>的值为?</span><br><span class="line">echo <span class="constructor">$(<span class="params">foo</span>)</span>来进行查看</span><br></pre></td></tr></table></figure>
-<ul>
-<li>优点：它可以向后引用变量</li>
-<li>缺点：不能对该变量进行任何扩展</li>
-</ul>
-</li>
-<li>用?=定义变量<br>&#8195;dir:=/foo/bar<br>&#8195;FOO?=bar<br>&#8195;FOO是?  <code>FOO之前没被定义过则被定义为bar</code></li>
-<li>预定义变量<ul>
-<li>AR &#8195; 库文件维护程序的名称，默认值为ar</li>
-<li>CC &#8195; <code>C编译器</code>的名称，默认值为cc。CPP&#8195;C预编译器的名称，默认值为$(CC) -E</li>
-<li>CXX &#8195; <code>C++编译器</code>的名称，默认值为g++</li>
-<li>FC &#8195; <code>FORTRAN编译器</code>的名称，默认值为f77</li>
-<li>RM &#8195; <code>文件删除</code>程序的名称，默认值为rm -f</li>
-</ul>
-</li>
-<li>自动变量<ul>
-<li>$* &#8195; <code>不包含扩展名</code>的目标文件名称</li>
-<li>$+ &#8195; <code>所有的依赖文件</code>，以空格分开，并以出现的先后为序，可能包含重复的依赖文件</li>
-<li>$&lt; &#8195; <code>第一个依赖文件</code>的名称</li>
-<li>$? &#8195; <code>所有时间戳比目标文件晚的依赖文件</code>，并以空格分开</li>
-<li>$@ &#8195; 目标文件的<code>完整名称</code></li>
-<li>$^ &#8195; 所有<code>不重复的目标依赖文件</code>，以空格分开</li>
-<li>$% &#8195; 如果目标是归档成员，则改变量表示目标的归档成员名称</li>
-</ul>
-</li>
-<li>刚才的例子：  <figure class="highlight makefile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">OBJS = kang.o yul.o</span><br><span class="line">CC = gcc</span><br><span class="line">CFLAGS = -Wall -O -g</span><br><span class="line">sunq : <span class="variable">$(OBJS)</span></span><br><span class="line">    <span class="variable">$(CC)</span> <span class="variable">$^</span> -o <span class="variable">$@</span></span><br><span class="line">kang.o : kang.c kang.h</span><br><span class="line">    <span class="variable">$(CC)</span> <span class="variable">$(CFLAGS)</span> -c <span class="variable">$&lt;</span> -o <span class="variable">$@</span></span><br><span class="line">yul.o : yul.c yul.h</span><br><span class="line">    <span class="variable">$(CC)</span> <span class="variable">$(CFLAGS)</span> -c <span class="variable">$&lt;</span> -o <span class="variable">$@</span></span><br></pre></td></tr></table></figure></li>
-<li>环境变量<ul>
-<li>make在启动时会自动读取系统当前已经定义了的环境变量，而且会创建与之具有相同名称和数值的变量</li>
-<li>如果用户在Makefile中定义了相同名称的变量，那么用户自定义变量将会覆盖同名的环境变量</li>
+        <h1 id="Makefile"><a href="#Makefile" class="headerlink" title="Makefile"></a>Makefile</h1><h2 id="VPATH的用法"><a href="#VPATH的用法" class="headerlink" title="VPATH的用法"></a>VPATH的用法</h2><ul>
+<li>VPATH：虚路径<ul>
+<li>在一些大的工程中，有大量的源文件，我们通常的做法是把这许多的源文件分类，并存放在不同的目录里。所以，当make需要去寻找文件的依赖关系时，你可以在文件前加上路径，但<code>最好的方法时把一个路径告诉make，让make自动去寻找</code>。</li>
+<li>Makefile文件中的特殊变量”VPATH”就是完成这个功能的，如果没有指明这个变量，make只会在当前的目录中去找寻依赖文件和目标文件，到所指定的目录中去找寻文件了。</li>
+<li><code>VPATH = src:../headers</code></li>
+<li>上面的定义<code>指定两个目录</code>，<code>&quot;src&quot;</code>和<code>&quot;../headers&quot;</code>, make会按照这个顺序进行搜索，目录由”冒号”分隔。(当然，当前目录永远是最高优先搜索的地方)<h2 id="嵌套的Makefile"><a href="#嵌套的Makefile" class="headerlink" title="嵌套的Makefile"></a>嵌套的Makefile</h2></li>
 </ul>
 </li>
 </ul>
@@ -398,7 +337,7 @@
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-02-09T22:35:01+08:00">
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-02-09T22:42:55+08:00">
   <a class='notlink'>
     <i class="fas fa-clock" aria-hidden="true"></i>
     <p>更新于 2020年2月9日</p>
@@ -423,7 +362,7 @@
       
         <a class="-mob-share-qq" title="QQ好友" rel="external nofollow noopener noreferrer"
           
-          href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/2020/02/09/01-makefile/&title=laihuihang | 嵌入式小菜鸡&summary="
+          href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/2020/02/04/03-makefile/&title=laihuihang | 嵌入式小菜鸡&summary="
           
           >
           
@@ -435,7 +374,7 @@
       
         <a class="-mob-share-qzone" title="QQ空间" rel="external nofollow noopener noreferrer"
           
-          href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=http://yoursite.com/2020/02/09/01-makefile/&title=laihuihang | 嵌入式小菜鸡&summary="
+          href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=http://yoursite.com/2020/02/04/03-makefile/&title=laihuihang | 嵌入式小菜鸡&summary="
           
           >
           
@@ -447,7 +386,7 @@
       
         <a class="-mob-share-weibo" title="微博" rel="external nofollow noopener noreferrer"
           
-          href="http://service.weibo.com/share/share.php?url=http://yoursite.com/2020/02/09/01-makefile/&title=laihuihang | 嵌入式小菜鸡&summary="
+          href="http://service.weibo.com/share/share.php?url=http://yoursite.com/2020/02/04/03-makefile/&title=laihuihang | 嵌入式小菜鸡&summary="
           
           >
           
@@ -471,14 +410,15 @@
       
           <div class="prev-next">
               
-                  <section class="prev">
-                      <span class="art-item-left">
-                          <h6><i class="fas fa-chevron-left" aria-hidden="true"></i>&nbsp;上一页</h6>
+              
+                  <section class="next">
+                      <span class="art-item-right" aria-hidden="true">
+                          <h6>下一页&nbsp;<i class="fas fa-chevron-right" aria-hidden="true"></i></h6>
                           <h4>
-                              <a href="/2020/02/09/03-makefile/" rel="prev" title="laihuihang">
-                                
-                                    laihuihang
-                                
+                              <a href="/2020/02/04/02-makefile/" rel="prev" title="laihuihang">
+                                  
+                                      laihuihang
+                                  
                               </a>
                           </h4>
                           
@@ -489,7 +429,6 @@
                           
                       </span>
                   </section>
-              
               
           </div>
       
