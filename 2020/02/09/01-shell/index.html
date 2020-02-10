@@ -248,6 +248,14 @@
         
           
             
+  
+  <div class='new-meta-item category'>
+    <a href='/categories/Shell/' rel="nofollow">
+      <i class="fas fa-folder-open" aria-hidden="true"></i>
+      <p>Shell</p>
+    </a>
+  </div>
+
 
           
         
@@ -276,7 +284,7 @@
       <a class='notlink'>
         <i class="fas fa-keyboard" aria-hidden="true"></i>
         <p>字数统计:</p>
-        <p>0字</p>
+        <p>438字</p>
       </a>
     </div>
     <div class="new-meta-item readtime">
@@ -305,7 +313,48 @@
 
     <section class="article typo">
       <div class="article-entry" itemprop="articleBody">
-        
+        <h1 id="shell脚本基础"><a href="#shell脚本基础" class="headerlink" title="shell脚本基础"></a>shell脚本基础</h1><h2 id="echo命令："><a href="#echo命令：" class="headerlink" title="echo命令："></a>echo命令：</h2><ul>
+<li><code>echo &quot;字符串&quot;</code></li>
+<li><code>echo -n “字符串”</code>&#8195;表示不换行</li>
+<li><code>echo $?</code>&#8195; 表示上一条语句的执行结果，<code>0</code>表示<code>真</code>，<code>非0</code>表示<code>假</code></li>
+</ul>
+<h2 id="expr命令："><a href="#expr命令：" class="headerlink" title="expr命令："></a>expr命令：</h2><p>算术运算命令<code>expr</code>主要用于简单的整数运算，包括<code>(+)</code>,<code>(-)</code>,<code>(*)</code>,<code>(/)</code>和求模<code>(%)</code>等操作：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ expr 12 + 5 \* 3</span><br><span class="line">$ expr 3 - 8 / 2</span><br><span class="line">$ A=expr 12 + 5 \* 3</span><br></pre></td></tr></table></figure>
+<p>注:算数运算两边必须加空格，赋值语句两边不能加空格</p>
+<h2 id="test命令："><a href="#test命令：" class="headerlink" title="test命令："></a>test命令：</h2><p><code>test语句</code>可测试三种对象  </p>
+<p><code>字符串</code> <code>整数</code> <code>文件属性</code></p>
+<ul>
+<li>字符串模式<ul>
+<li><code>s1 = s2</code>&#8195;测试两个字符串的内容是否完全一样</li>
+<li><code>s1 ！= s2</code>&#8195; 测试两个字符串的内容是否有差异</li>
+<li><code>-z s1</code>&#8195; 测试s1字符串的长度是否为0</li>
+<li><code>-n s1</code>&#8195; 测试s1字符串的长度是否不为0</li>
+</ul>
+</li>
+<li>整数<ul>
+<li><code>a -eq b</code>&#8195; 测试a与b是否<code>相等</code></li>
+<li><code>a -ne b</code>&#8195; 测试a与b是否<code>不相等</code></li>
+<li><code>a -gt b</code>&#8195; 测试a是否<code>大于</code>b</li>
+<li><code>a -ge b</code>&#8195; 测试a是否<code>大于等于</code>b</li>
+<li><code>a -lt b</code>&#8195; 测试a是否<code>小于</code>b</li>
+<li><code>a -le b</code>&#8195; 测试a是否<code>小于等于</code>b</li>
+</ul>
+</li>
+<li>文件属性<ul>
+<li><code>-d name</code>&#8195; 测试name是否为一个<code>目录</code></li>
+<li><code>-e name</code>&#8195; 测试一个文件<code>是否存在</code></li>
+<li><code>-f name</code>&#8195; 测试name是否为<code>普通文件</code></li>
+<li><code>-L name</code>&#8195; 测试name是否为<code>符号链接</code></li>
+<li><code>-r name</code>&#8195; 测试name文件是否<code>存在</code>且为<code>可读</code></li>
+<li><code>-w name</code>&#8195; 测试name文件是否<code>存在</code>且为<code>可写</code></li>
+<li><code>-x name</code>&#8195; 测试name文件是否<code>存在</code>且为<code>可执行</code></li>
+<li><code>-s name</code>&#8195; 测试name文件是否<code>存在</code>且其长度<code>不为0</code></li>
+<li><code>f1 -nt f2</code>&#8195; 测试文件f1是否比文件f2<code>更新</code></li>
+<li><code>f1 -ot f2</code>&#8195; 测试文件f1是否比文件f2<code>更旧</code></li>
+</ul>
+</li>
+</ul>
+
       </div>
       
         <br>
@@ -320,10 +369,10 @@
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-02-09T23:16:17+08:00">
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-02-10T16:12:23+08:00">
   <a class='notlink'>
     <i class="fas fa-clock" aria-hidden="true"></i>
-    <p>更新于 2020年2月9日</p>
+    <p>更新于 2020年2月10日</p>
   </a>
 </div>
 
@@ -331,6 +380,9 @@
       
         
           
+  
+  <div class="new-meta-item meta-tags"><a class="tag" href="/tags/Shell/" rel="nofollow"><i class="fas fa-tag" aria-hidden="true"></i><p>Shell</p></a></div>
+
 
         
       
@@ -400,6 +452,11 @@
                                 
                               </a>
                           </h4>
+                          
+                              
+                              <h6 class="tags">
+                                  <a class="tag" href="/tags/Shell/"><i class="fas fa-tag fa-fw" aria-hidden="true"></i> Shell</a>
+                              </h6>
                           
                       </span>
                   </section>
@@ -598,6 +655,8 @@
         
           <li><a class="flat-box" title="/categories/MakeFile/" href="/categories/MakeFile/"><div class='name'>MakeFile</div><div class='badge'>(3)</div></a></li>
         
+          <li><a class="flat-box" title="/categories/Shell/" href="/categories/Shell/"><div class='name'>Shell</div><div class='badge'>(4)</div></a></li>
+        
       </ul>
     </div>
   </section>
@@ -641,7 +700,7 @@
 </header>
 
     <div class='content pure'>
-      <a href="/tags/MakeFile/" style="font-size: 14px; color: #999">MakeFile</a>
+      <a href="/tags/MakeFile/" style="font-size: 14px; color: #999">MakeFile</a> <a href="/tags/Shell/" style="font-size: 24px; color: #555">Shell</a>
     </div>
   </section>
 
