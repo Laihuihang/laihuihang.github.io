@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   
-  <title>IIC协议时序分析 | 嵌入式小菜鸡</title>
+  <title>01-计算机网络 | 嵌入式小菜鸡</title>
   
   
 
@@ -208,8 +208,8 @@
         
   
     <h1 class="title">
-      <a href="/2020/02/12/IIC/">
-        IIC协议时序分析
+      <a href="/2020/02/14/01-%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/">
+        01-计算机网络
       </a>
     </h1>
   
@@ -240,7 +240,7 @@
             <div class="new-meta-item date">
   <a class='notlink'>
     <i class="fas fa-calendar-alt" aria-hidden="true"></i>
-    <p>2020-02-12</p>
+    <p>2020-02-14</p>
   </a>
 </div>
 
@@ -250,9 +250,9 @@
             
   
   <div class='new-meta-item category'>
-    <a href='/categories/%E6%80%BB%E7%BA%BF%E5%8D%8F%E8%AE%AE/' rel="nofollow">
+    <a href='/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/' rel="nofollow">
       <i class="fas fa-folder-open" aria-hidden="true"></i>
-      <p>总线协议</p>
+      <p>计算机网络</p>
     </a>
   </div>
 
@@ -284,14 +284,14 @@
       <a class='notlink'>
         <i class="fas fa-keyboard" aria-hidden="true"></i>
         <p>字数统计:</p>
-        <p>543字</p>
+        <p>405字</p>
       </a>
     </div>
     <div class="new-meta-item readtime">
       <a class='notlink'>
         <i class="fas fa-hourglass-half" aria-hidden="true"></i>
         <p>阅读时长≈</p>
-        <p>2分</p>
+        <p>1分</p>
       </a>
     </div>
   
@@ -313,16 +313,57 @@
 
     <section class="article typo">
       <div class="article-entry" itemprop="articleBody">
-        <h1 id="IIC协议时序分析"><a href="#IIC协议时序分析" class="headerlink" title="IIC协议时序分析"></a>IIC协议时序分析</h1><h2 id="IIC简介"><a href="#IIC简介" class="headerlink" title="IIC简介"></a>IIC简介</h2><p>IIC（Inter-Integrated Circuit）其实是IICBus简称，所以中文应该叫集成电路总线，它是一种串行通信总线，使用多主从架构，由飞利浦公司在1980年代为了让主板、嵌入式系统或手机用以连接低速周边设备而发展。</p>
-<h2 id="IIC组成"><a href="#IIC组成" class="headerlink" title="IIC组成"></a>IIC组成</h2><p>IIC串行总线一般有两根信号线，一根是<code>双向</code>的数据线SDA，另一根是时钟线SCL。所有接到IIC总线设备上的串行数据SDA都接到总线的SDA上，各设备的时钟线SCL接到总线的SCL上。<br>空闲状态：SCL高电平   SDA高电平</p>
-<h2 id="IIC具体协议时序"><a href="#IIC具体协议时序" class="headerlink" title="IIC具体协议时序"></a>IIC具体协议时序</h2><h3 id="开始停止信号"><a href="#开始停止信号" class="headerlink" title="开始停止信号"></a>开始停止信号</h3><p><img src="https://tva1.sinaimg.cn/large/0082zybply1gbtlofog3uj30nf064jre.jpg" alt="start"><br>代码实现：</p>
-<figure class="highlight reasonml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line">void <span class="constructor">IIC_Start(<span class="params">void</span>)</span></span><br><span class="line"></span><br><span class="line">&#123;</span><br><span class="line"></span><br><span class="line">    I2C2_SDA_H;  <span class="comment">//拉高数据线</span></span><br><span class="line"></span><br><span class="line">    I2C2_SCL_H;  <span class="comment">//拉高时钟线</span></span><br><span class="line"></span><br><span class="line">    <span class="constructor">I2C2_delay()</span>;<span class="comment">//现在延时为16us， 5</span></span><br><span class="line"></span><br><span class="line">    I2C2_SDA_L; <span class="comment">//产生下降沿</span></span><br><span class="line"></span><br><span class="line">    <span class="constructor">I2C2_delay()</span>;</span><br><span class="line"></span><br><span class="line">    I2C2_SCL_L;<span class="comment">//拉低时钟线，钳住I2C总线，准备发数据或者接受数据</span></span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line">void <span class="constructor">IIC_Stop(<span class="params">void</span>)</span></span><br><span class="line"></span><br><span class="line">&#123;</span><br><span class="line"></span><br><span class="line">    I2C2_SCL_L;</span><br><span class="line"></span><br><span class="line">    <span class="constructor">I2C2_delay()</span>;</span><br><span class="line"></span><br><span class="line">    I2C2_SDA_L;  <span class="comment">//停止，CLK上升沿</span></span><br><span class="line"></span><br><span class="line">    <span class="constructor">I2C2_delay()</span>;</span><br><span class="line"></span><br><span class="line">    I2C2_SCL_H;  <span class="comment">//拉高时钟线</span></span><br><span class="line"></span><br><span class="line">    <span class="constructor">I2C2_delay()</span>;</span><br><span class="line"></span><br><span class="line">    I2C2_SDA_H;  <span class="comment">//拉高数据线，结束信号</span></span><br><span class="line"></span><br><span class="line">    <span class="constructor">I2C2_delay()</span>;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="数据传输"><a href="#数据传输" class="headerlink" title="数据传输"></a>数据传输</h3><p><img src="https://img-blog.csdnimg.cn/2019060815381722.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3N1cGVyODI4,size_16,color_FFFFFF,t_70" alt="tranmform"></p>
-<p>每一个字节必须保证是<code>8位长度</code>。数据传输时，<code>先传送最高位(MSB)</code>，每一个被传送的字节后面都必须<code>跟随一位应答位</code>，即一帧共有9位。</p>
-<p>代码实现：</p>
-<figure class="highlight arduino"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">write_byte</span><span class="params">(<span class="keyword">unsigned</span> <span class="keyword">char</span> dat)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">unsigned</span> <span class="keyword">char</span> i = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(i = <span class="number">0</span>; i &lt; <span class="number">8</span>; i++) &#123;</span><br><span class="line">        dat = dat&lt;&lt;<span class="number">1</span>;</span><br><span class="line">        I2C2_SCL_L;</span><br><span class="line">        <span class="built_in">delay</span>();</span><br><span class="line">        SDA = CY;    <span class="comment">//类似于8086的PSW的CF位 即左移data溢出位进入CY</span></span><br><span class="line">        <span class="built_in">delay</span>();</span><br><span class="line">        I2C2_SCL_H;</span><br><span class="line">        <span class="built_in">delay</span>();    </span><br><span class="line">    &#125;</span><br><span class="line">    I2C2_SCL_L;</span><br><span class="line">    <span class="built_in">delay</span>();</span><br><span class="line">    I2C2_SDA_H;</span><br><span class="line">    <span class="built_in">delay</span>();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">unsigned</span> <span class="keyword">char</span> <span class="title">read_byte</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">unsigned</span> <span class="keyword">char</span> i = <span class="number">0</span>, dat;</span><br><span class="line">    I2C2_SCL_L;</span><br><span class="line">    <span class="built_in">delay</span>();</span><br><span class="line">    I2C2_SDA_H;</span><br><span class="line">    <span class="keyword">for</span>(i = <span class="number">0</span>; i &lt; <span class="number">8</span>; i++) &#123;</span><br><span class="line">        I2C2_SCL_H;</span><br><span class="line">        <span class="built_in">delay</span>();</span><br><span class="line">        dat = (dat&lt;&lt;<span class="number">1</span>) | SDA;</span><br><span class="line">        I2C2_SCL_L;</span><br><span class="line">        <span class="built_in">delay</span>();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> dat;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="应答"><a href="#应答" class="headerlink" title="应答"></a>应答</h3><p>当IIC主机(不一定是发送端还是接收端)将8位数据或命令传出后，会将SDA信号设置为输入，等待从机应答(等待SDA由高电平拉为低电平)若从机正确应答，表示数据或命令传输成功，否则传输失败。<code>注意：应答信号是数据接收方发送给数据发送方的。</code><br><img src="https://tva1.sinaimg.cn/large/0082zybply1gbtlmfamm4j30ny09oaab.jpg" alt="reponse"><br>代码实现：</p>
-<figure class="highlight abnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">void Respons()</span><br><span class="line">&#123;</span><br><span class="line">    I2C2_SDA_L<span class="comment">;</span></span><br><span class="line">    delay()<span class="comment">;</span></span><br><span class="line">    I2C2_SCL_H<span class="comment">;</span></span><br><span class="line">    delay()<span class="comment">;</span></span><br><span class="line">    I2C2_SCL_L<span class="comment">;</span></span><br><span class="line">    delay()<span class="comment">;</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void NoRespons()</span><br><span class="line">&#123;</span><br><span class="line">    I2C2_SDA_H<span class="comment">;</span></span><br><span class="line">    delay()<span class="comment">;</span></span><br><span class="line">    I2C2_SCL_H<span class="comment">;</span></span><br><span class="line">    delay()<span class="comment">;</span></span><br><span class="line">    I2C2_SCL_L<span class="comment">;</span></span><br><span class="line">    delay()<span class="comment">;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+        <h1 id="计算机网络"><a href="#计算机网络" class="headerlink" title="计算机网络"></a>计算机网络</h1><h2 id="OSI七层模型"><a href="#OSI七层模型" class="headerlink" title="OSI七层模型"></a>OSI七层模型</h2><ul>
+<li>物理层</li>
+<li>数据链路层</li>
+<li>网络层</li>
+<li>传输层</li>
+<li>会话层</li>
+<li>表示层</li>
+<li>应用层<h2 id="网络采用分层的思想"><a href="#网络采用分层的思想" class="headerlink" title="网络采用分层的思想"></a>网络采用分层的思想</h2></li>
+</ul>
+<ol>
+<li>每一层实现不同的功能，对上层的数据做透明传输</li>
+<li>每一层向上层提供服务，同时使用下层提供的服务<h2 id="各层典型的协议"><a href="#各层典型的协议" class="headerlink" title="各层典型的协议"></a>各层典型的协议</h2></li>
+</ol>
+<ul>
+<li>网络借口与物理层<ul>
+<li>MAC地址：48位全球唯一，网络设备的身份标识</li>
+<li>ARP/RARP：<ul>
+<li>ARP：IP地址–&gt;MAC地址</li>
+<li>RARP：MAC地址–&gt;IP地址</li>
+</ul>
+</li>
+<li>PPP协议：拨号协议(GPRS/3G/4G)  </li>
+</ul>
+</li>
+<li>网络层<ul>
+<li>IP：Internet protocol(分为IPv4和IPv6)</li>
+<li><code>ICMP：Internet控制管理协议</code>，ping命令属于ICMP，端到端</li>
+<li><code>IGMP：Internet分组管理协议</code>，广播，组播  </li>
+</ul>
+</li>
+<li>传输层<ul>
+<li>TCP(Transfer control protocol)提供面向连接的，一对一的可靠数据传输的协议<code>即数据无误，数据无丢失，数据无失序，数据无重复到达的通信</code></li>
+<li>UDP(user Datagram protocol)提供不可靠无链接的尽力传输协议<code>是不可靠的无链接协议，在数据发送前，不需要连接，所以可以进行高效率的数据传输</code></li>
+<li>SCTP：可靠传输，是TCP的增强版，它能实现多主机，多链路的通信</li>
+</ul>
+</li>
+<li>应用层<ul>
+<li>网页访问协议：HTTP/HTTPS</li>
+<li>邮件发送接受协议：POP3(收)/SMTP(发)，IMAP(可接受邮件的一部分)</li>
+<li>FTP</li>
+<li>Talent/SSH：远程登陆</li>
+<li>嵌入式相关：<ul>
+<li>NTP：网络时钟协议</li>
+<li><code>SNMP</code>：简单网络管理协议</li>
+<li>RTP/RTSP：用传输音视频的协议，用于安防监控，<code>事实上这个协议是TCP+UDP来实现的</code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
       </div>
       
         <br>
@@ -337,10 +378,10 @@
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-02-12T14:28:09+08:00">
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-02-14T17:39:34+08:00">
   <a class='notlink'>
     <i class="fas fa-clock" aria-hidden="true"></i>
-    <p>更新于 2020年2月12日</p>
+    <p>更新于 2020年2月14日</p>
   </a>
 </div>
 
@@ -349,7 +390,7 @@
         
           
   
-  <div class="new-meta-item meta-tags"><a class="tag" href="/tags/IIC/" rel="nofollow"><i class="fas fa-tag" aria-hidden="true"></i><p>IIC</p></a></div>
+  <div class="new-meta-item meta-tags"><a class="tag" href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" rel="nofollow"><i class="fas fa-tag" aria-hidden="true"></i><p>计算机网络</p></a></div>
 
 
         
@@ -362,7 +403,7 @@
       
         <a class="-mob-share-qq" title="QQ好友" rel="external nofollow noopener noreferrer"
           
-          href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/2020/02/12/IIC/&title=IIC协议时序分析 | 嵌入式小菜鸡&summary="
+          href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/2020/02/14/01-%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/&title=01-计算机网络 | 嵌入式小菜鸡&summary="
           
           >
           
@@ -374,7 +415,7 @@
       
         <a class="-mob-share-qzone" title="QQ空间" rel="external nofollow noopener noreferrer"
           
-          href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=http://yoursite.com/2020/02/12/IIC/&title=IIC协议时序分析 | 嵌入式小菜鸡&summary="
+          href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=http://yoursite.com/2020/02/14/01-%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/&title=01-计算机网络 | 嵌入式小菜鸡&summary="
           
           >
           
@@ -386,7 +427,7 @@
       
         <a class="-mob-share-weibo" title="微博" rel="external nofollow noopener noreferrer"
           
-          href="http://service.weibo.com/share/share.php?url=http://yoursite.com/2020/02/12/IIC/&title=IIC协议时序分析 | 嵌入式小菜鸡&summary="
+          href="http://service.weibo.com/share/share.php?url=http://yoursite.com/2020/02/14/01-%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/&title=01-计算机网络 | 嵌入式小菜鸡&summary="
           
           >
           
@@ -414,9 +455,9 @@
                       <span class="art-item-left">
                           <h6><i class="fas fa-chevron-left" aria-hidden="true"></i>&nbsp;上一页</h6>
                           <h4>
-                              <a href="/2020/02/14/01-%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" rel="prev" title="01-计算机网络">
+                              <a href="/2020/02/14/02-%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" rel="prev" title="02-计算机网络">
                                 
-                                    01-计算机网络
+                                    02-计算机网络
                                 
                               </a>
                           </h4>
@@ -434,16 +475,16 @@
                       <span class="art-item-right" aria-hidden="true">
                           <h6>下一页&nbsp;<i class="fas fa-chevron-right" aria-hidden="true"></i></h6>
                           <h4>
-                              <a href="/2020/02/10/04-shell/" rel="prev" title="04-shell">
+                              <a href="/2020/02/12/IIC/" rel="prev" title="IIC协议时序分析">
                                   
-                                      04-shell
+                                      IIC协议时序分析
                                   
                               </a>
                           </h4>
                           
                               
                               <h6 class="tags">
-                                  <a class="tag" href="/tags/Shell/"><i class="fas fa-tag fa-fw" aria-hidden="true"></i> Shell</a>
+                                  <a class="tag" href="/tags/IIC/"><i class="fas fa-tag fa-fw" aria-hidden="true"></i> IIC</a>
                               </h6>
                           
                       </span>
@@ -473,7 +514,7 @@
 
   <script>
     window.subData = {
-      title: 'IIC协议时序分析',
+      title: '01-计算机网络',
       tools: true
     }
   </script>
