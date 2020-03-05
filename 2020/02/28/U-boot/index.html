@@ -284,7 +284,7 @@
       <a class='notlink'>
         <i class="fas fa-keyboard" aria-hidden="true"></i>
         <p>字数统计:</p>
-        <p>780字</p>
+        <p>773字</p>
       </a>
     </div>
     <div class="new-meta-item readtime">
@@ -365,48 +365,58 @@
 <li><p>u-boot的第一阶段<code>硬件初始化</code>(注：硬件初始化只针对2440开发版)</p>
 <ul>
 <li><p>将CPU模式设置为SVC32<code>(管理模式)</code></p>
-<figure class="highlight armasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">  <span class="keyword">mrs </span><span class="built_in">r0</span>, <span class="keyword">cpsr</span></span><br><span class="line"><span class="keyword"> </span> <span class="keyword">bic </span><span class="built_in">r0</span>, <span class="built_in">r0</span>, <span class="number">#0x1f</span></span><br><span class="line">  <span class="keyword">orr </span><span class="built_in">r0</span>, <span class="built_in">r0</span>, <span class="number">#0xd3</span></span><br><span class="line">  <span class="keyword">msr </span><span class="keyword">cpsr </span><span class="built_in">r0</span></span><br><span class="line">  ```   </span><br><span class="line"></span><br><span class="line">- 关看门狗</span><br></pre></td></tr></table></figure>
-<p>#define pWTCON 0x15300000</p>
-<pre><code>ldr r0, =pWTCON
-mov r1, #0x0
-str r1, [r0]</code></pre><figure class="highlight asciidoc"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="bullet">- </span>屏蔽中断</span><br></pre></td></tr></table></figure>
-<p>#define INTMSK 0x4A000008<br>#define INTSUBMSK 0x4A00001C</p>
-<pre><code>mov r1, #0xffffffff
-ldr r0, =INTMSK
-str r1, [r0]</code></pre><p>#if defined(CONFIG_S3C2410)</p>
-<pre><code>ldr r1, =0x3ff
-ldr r0, =INTSUBMSK
-str r1, [r0]</code></pre><figure class="highlight asciidoc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="bullet">- </span>初始化时钟</span><br></pre></td></tr></table></figure>
-<p>#define CLKDIVN 0x4C000014</p>
-<pre><code>ldr r0, =CLKDIVN
-mov r1, #3
-str r1, [r0]</code></pre><figure class="highlight asciidoc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="bullet">- </span>初始化SDRAM</span><br></pre></td></tr></table></figure>
-<p>relocate:</p>
-<pre><code>adr r0, _start
-ldr r1, _TEXT_BASE
-cmp r0, r1
-beq stack_setup
-
-ldr r2, _armboot_start
-ldr r3, _bss_start
-sub r2, r3, r2
-add r2, r0, r2</code></pre><figure class="highlight asciidoc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="bullet">- </span>设置栈</span><br></pre></td></tr></table></figure>
-<p>stack_setup:</p>
-<pre><code>ldr r0, _TEXT_BASE
-sub r0, r0, #CONFIG_SYS_MALLOC_LEN
-sub r0, r0, #CONFIG_SYS_GBL_DATA_SIZE</code></pre><p>#ifdef CONFIG_USE_IRQ</p>
-<pre><code>sub r0, r0, #(CONFIG_STACKSIZE_IRQ+CONFIG_STACKSIZE_FIQ)</code></pre><p>#endif</p>
-<pre><code>sub sp, r0, #12
-vic sp, sp, #7</code></pre><figure class="highlight asciidoc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="bullet">- </span>将flash拷到SDRAM</span><br></pre></td></tr></table></figure>
-<p>分为从nor flash启动还是从nand flash启动<br>从nor flash直接复制<br>从nand flash启动要进行初始化<br>如何判断是从nor还是nand flash启动？<br>对于norflash 必须通过一定的命令序列才能写数据。<br>所以可以根据这点差别来分辨是从nor还是nand启动<br>向地址0写入一个数据，然后读出来，如果没有改变的话就是nor flash。</p>
-<figure class="highlight angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">- 清空BSS段(初始值为<span class="number">0</span>的静态变量或全局变量，或者未初始化的静态变量或全局变量)</span><br></pre></td></tr></table></figure>
-<p>clear_bss:</p>
-<pre><code>ldr r0, _bss_start
-ldr r1, _bss_end
-mov r2, #0x00000000 //clear </code></pre><figure class="highlight autohotkey"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">- u-boot的第二阶段，启动内核(c语言实现)</span><br><span class="line">  - 从flash中读出内核</span><br><span class="line">    - 读flash</span><br><span class="line">      - `flash_init()`函数实现对norflash的初始化</span><br><span class="line">      - `nand_init()`函数实现对nandflash的初始化</span><br><span class="line">      - `nand_read`函数将`kernel分区`中的内容读到<span class="number">0</span>x30007FC0地址中(分区由我们自己在flash中指定划分，分区名字不重要，分区名代表`起始地址`与`分区大小`)</span><br></pre></td></tr></table></figure>
-<p>  nand read.jffs2 0x30007FC0 kernel;</p>
-  <figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="code">    </span></span><br><span class="line"><span class="bullet">- </span>启动内核</span><br><span class="line"><span class="bullet">     - </span>设置启动参数</span><br><span class="line"><span class="bullet">     - </span>跳到入口地址</span><br><span class="line"><span class="bullet">     - </span><span class="code">`s=getenv("bootcmd")`</span></span><br><span class="line"><span class="bullet">     - </span><span class="code">`run_command(s)`</span></span><br><span class="line"><span class="bullet">     - </span>flash上存在的内核：UImage(头部+真正的内核)</span><br></pre></td></tr></table></figure>
-<p>  //UImage的头部有加载地址，当do_bootm后面跟的地址与头部的加载地址不同，将内核移到加载地址执行，因此do_bootm后面的地址不一定非要很准确，只要不破坏结构即可。<br>  do_bootm(地址);<br>  ```</p>
+<figure class="highlight armasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">mrs </span><span class="built_in">r0</span>, <span class="keyword">cpsr</span></span><br><span class="line"><span class="keyword">bic </span><span class="built_in">r0</span>, <span class="built_in">r0</span>, <span class="number">#0x1f</span></span><br><span class="line"><span class="keyword">orr </span><span class="built_in">r0</span>, <span class="built_in">r0</span>, <span class="number">#0xd3</span></span><br><span class="line"><span class="keyword">msr </span><span class="keyword">cpsr </span><span class="built_in">r0</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>关看门狗</p>
+<figure class="highlight armasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="symbol">#define</span> pWTCON <span class="number">0x15300000</span></span><br><span class="line">    <span class="keyword">ldr </span><span class="built_in">r0</span>, <span class="symbol">=pWTCON</span></span><br><span class="line">    <span class="keyword">mov </span><span class="built_in">r1</span>, <span class="number">#0x0</span></span><br><span class="line">    <span class="keyword">str </span><span class="built_in">r1</span>, [<span class="built_in">r0</span>]</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>屏蔽中断</p>
+<figure class="highlight x86asm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">#define INTMSK <span class="number">0x4A000008</span></span><br><span class="line">#define INTSUBMSK <span class="number">0x4A00001C</span></span><br><span class="line">    <span class="keyword">mov</span> <span class="built_in">r1</span>, #<span class="number">0xffffffff</span></span><br><span class="line">    ldr <span class="built_in">r0</span>, =INTMSK</span><br><span class="line">    <span class="keyword">str</span> <span class="built_in">r1</span>, [<span class="built_in">r0</span>]</span><br><span class="line">#if defined(CONFIG_S3C2410)</span><br><span class="line">    ldr <span class="built_in">r1</span>, =<span class="number">0x3ff</span></span><br><span class="line">    ldr <span class="built_in">r0</span>, =INTSUBMSK</span><br><span class="line">    <span class="keyword">str</span> <span class="built_in">r1</span>, [<span class="built_in">r0</span>]</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>初始化时钟</p>
+<figure class="highlight armasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="symbol">#define</span> CLKDIVN <span class="number">0x4C000014</span></span><br><span class="line">    <span class="keyword">ldr </span><span class="built_in">r0</span>, <span class="symbol">=CLKDIVN</span></span><br><span class="line">    <span class="keyword">mov </span><span class="built_in">r1</span>, <span class="number">#3</span></span><br><span class="line">    <span class="keyword">str </span><span class="built_in">r1</span>, [<span class="built_in">r0</span>]</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>初始化SDRAM</p>
+<figure class="highlight armasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="symbol">relocate</span>:</span><br><span class="line">    <span class="keyword">adr </span><span class="built_in">r0</span>, _start</span><br><span class="line">    <span class="keyword">ldr </span><span class="built_in">r1</span>, _TEXT_BASE</span><br><span class="line">    <span class="keyword">cmp </span><span class="built_in">r0</span>, <span class="built_in">r1</span></span><br><span class="line">    <span class="keyword">beq </span>stack_setup</span><br><span class="line"></span><br><span class="line">    <span class="keyword">ldr </span><span class="built_in">r2</span>, _armboot_start</span><br><span class="line">    <span class="keyword">ldr </span><span class="built_in">r3</span>, _bss_start</span><br><span class="line">    <span class="keyword">sub </span><span class="built_in">r2</span>, <span class="built_in">r3</span>, <span class="built_in">r2</span></span><br><span class="line">    <span class="keyword">add </span><span class="built_in">r2</span>, <span class="built_in">r0</span>, <span class="built_in">r2</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>设置栈</p>
+<figure class="highlight avrasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="symbol">stack_setup:</span></span><br><span class="line">    ldr <span class="built_in">r0</span>, _TEXT_BASE</span><br><span class="line">    <span class="keyword">sub</span> <span class="built_in">r0</span>, <span class="built_in">r0</span>, <span class="meta">#CONFIG_SYS_MALLOC_LEN</span></span><br><span class="line">    <span class="keyword">sub</span> <span class="built_in">r0</span>, <span class="built_in">r0</span>, <span class="meta">#CONFIG_SYS_GBL_DATA_SIZE</span></span><br><span class="line"><span class="meta">#ifdef CONFIG_USE_IRQ</span></span><br><span class="line">    <span class="keyword">sub</span> <span class="built_in">r0</span>, <span class="built_in">r0</span>, <span class="meta">#(CONFIG_STACKSIZE_IRQ+CONFIG_STACKSIZE_FIQ)</span></span><br><span class="line"><span class="meta">#endif</span></span><br><span class="line">    <span class="keyword">sub</span> sp, <span class="built_in">r0</span>, <span class="meta">#12</span></span><br><span class="line">    vic sp, sp, <span class="meta">#7</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>将flash拷到SDRAM</p>
+<figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">分为从<span class="keyword">nor</span> flash启动还是从<span class="keyword">nand</span> flash启动</span><br><span class="line">从<span class="keyword">nor</span> flash直接复制</span><br><span class="line">从<span class="keyword">nand</span> flash启动要进行初始化</span><br><span class="line">如何判断是从<span class="keyword">nor</span>还是<span class="keyword">nand</span> flash启动？</span><br><span class="line">对于norflash 必须通过一定的命令序列才能写数据。</span><br><span class="line">所以可以根据这点差别来分辨是从<span class="keyword">nor</span>还是<span class="keyword">nand</span>启动</span><br><span class="line">向地址<span class="number">0</span>写入一个数据，然后读出来，如果没有改变的话就是<span class="keyword">nor</span> flash。</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>清空BSS段(初始值为0的静态变量或全局变量，或者未初始化的静态变量或全局变量)</p>
+<figure class="highlight armasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="symbol">clear_bss</span>:</span><br><span class="line">    <span class="keyword">ldr </span><span class="built_in">r0</span>, _bss_start</span><br><span class="line">    <span class="keyword">ldr </span><span class="built_in">r1</span>, _bss_end</span><br><span class="line">    <span class="keyword">mov </span><span class="built_in">r2</span>, <span class="number">#0x00000000</span> //clear</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>u-boot的第二阶段，启动内核(c语言实现)</p>
+<ul>
+<li><p>从flash中读出内核</p>
+<ul>
+<li>读flash<ul>
+<li><code>flash_init()</code>函数实现对norflash的初始化</li>
+<li><code>nand_init()</code>函数实现对nandflash的初始化</li>
+<li><code>nand_read</code>函数将<code>kernel分区</code>中的内容读到0x30007FC0地址中(分区由我们自己在flash中指定划分，分区名字不重要，分区名代表<code>起始地址</code>与<code>分区大小</code>)<figure class="highlight abnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nand read.jffs2 <span class="number">0</span>x30007FC0 kernel<span class="comment">;</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>启动内核</p>
+<ul>
+<li><p>设置启动参数</p>
+</li>
+<li><p>跳到入口地址</p>
+</li>
+<li><p><code>s=getenv(&quot;bootcmd&quot;)</code></p>
+</li>
+<li><p><code>run_command(s)</code></p>
+</li>
+<li><p>flash上存在的内核：UImage(头部+真正的内核)</p>
+<p>UImage的头部有加载地址，当do_bootm后面跟的地址与头部的加载地址不同，将内核移到加载地址执行.<br>因此do_bootm后面的地址不一定非要很准确，只要不破坏结构即可。<br>do_bootm(地址);</p>
+</li>
+</ul>
 </li>
 </ul>
 </li>
@@ -426,10 +436,10 @@ mov r2, #0x00000000 //clear </code></pre><figure class="highlight autohotkey"><t
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-03-01T16:02:19+08:00">
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-03-05T22:14:47+08:00">
   <a class='notlink'>
     <i class="fas fa-clock" aria-hidden="true"></i>
-    <p>更新于 2020年3月1日</p>
+    <p>更新于 2020年3月5日</p>
   </a>
 </div>
 
@@ -498,6 +508,25 @@ mov r2, #0x00000000 //clear </code></pre><figure class="highlight autohotkey"><t
       
       
           <div class="prev-next">
+              
+                  <section class="prev">
+                      <span class="art-item-left">
+                          <h6><i class="fas fa-chevron-left" aria-hidden="true"></i>&nbsp;上一页</h6>
+                          <h4>
+                              <a href="/2020/03/01/01-My%20bootloader/" rel="prev" title="01-My bootloader">
+                                
+                                    01-My bootloader
+                                
+                              </a>
+                          </h4>
+                          
+                              
+                              <h6 class="tags">
+                                  <a class="tag" href="/tags/bootloader/"><i class="fas fa-tag fa-fw" aria-hidden="true"></i> bootloader</a>
+                              </h6>
+                          
+                      </span>
+                  </section>
               
               
                   <section class="next">
@@ -691,6 +720,8 @@ mov r2, #0x00000000 //clear </code></pre><figure class="highlight autohotkey"><t
     <div class='content pure'>
       <ul class="entry">
         
+          <li><a class="flat-box" title="/categories/My-bootloader/" href="/categories/My-bootloader/"><div class='name'>My bootloader</div><div class='badge'>(1)</div></a></li>
+        
           <li><a class="flat-box" title="/categories/Shell/" href="/categories/Shell/"><div class='name'>Shell</div><div class='badge'>(4)</div></a></li>
         
           <li><a class="flat-box" title="/categories/U-boot/" href="/categories/U-boot/"><div class='name'>U-boot</div><div class='badge'>(1)</div></a></li>
@@ -744,7 +775,7 @@ mov r2, #0x00000000 //clear </code></pre><figure class="highlight autohotkey"><t
 </header>
 
     <div class='content pure'>
-      <a href="/tags/IIC/" style="font-size: 14px; color: #999">IIC</a> <a href="/tags/Shell/" style="font-size: 24px; color: #555">Shell</a> <a href="/tags/bootloader/" style="font-size: 14px; color: #999">bootloader</a> <a href="/tags/makefile/" style="font-size: 19px; color: #777">makefile</a> <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" style="font-size: 19px; color: #777">计算机网络</a>
+      <a href="/tags/IIC/" style="font-size: 14px; color: #999">IIC</a> <a href="/tags/Shell/" style="font-size: 24px; color: #555">Shell</a> <a href="/tags/bootloader/" style="font-size: 17.33px; color: #828282">bootloader</a> <a href="/tags/makefile/" style="font-size: 20.67px; color: #6c6c6c">makefile</a> <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" style="font-size: 20.67px; color: #6c6c6c">计算机网络</a>
     </div>
   </section>
 
