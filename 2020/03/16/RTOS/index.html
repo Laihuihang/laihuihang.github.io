@@ -1,0 +1,1058 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  
+  <title>RTOS | NULL的Blog</title>
+  
+  
+
+  
+
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <!-- meta -->
+  
+
+  <!-- link -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-waves@0.7.6/dist/waves.min.css">
+  
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.10.1/css/all.min.css">
+  
+
+  
+
+  
+    
+<link rel="stylesheet" href="/style.css">
+
+  
+
+  <script>
+    function setLoadingBarProgress(num) {
+      document.getElementById('loading-bar').style.width=num+"%";
+    }
+  </script>
+
+  
+  
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+<body>
+  
+  
+  <header class="l_header pure">
+  <div id="loading-bar-wrapper">
+    <div id="loading-bar" class="pure"></div>
+  </div>
+
+	<div class='wrapper'>
+		<div class="nav-main container container--flex">
+      <a class="logo flat-box" href='/' >
+        
+          NULL的Blog
+        
+      </a>
+			<div class='menu navgation'>
+				<ul class='h-list'>
+          
+  					
+  						<li>
+								<a class="nav flat-box" href="/"
+                  
+                  
+                  id="home">
+									<i class='fas fa-grin fa-fw'></i>&nbsp;示例
+								</a>
+							</li>
+      			
+  						<li>
+								<a class="nav flat-box" href="/categories"
+                  
+                    rel="nofollow"
+                  
+                  
+                  id="categories">
+									<i class='fas fa-folder-open fa-fw'></i>&nbsp;分类
+								</a>
+							</li>
+      			
+  						<li>
+								<a class="nav flat-box" href="/tags"
+                  
+                    rel="nofollow"
+                  
+                  
+                  id="tags">
+									<i class='fas fa-hashtag fa-fw'></i>&nbsp;标签
+								</a>
+							</li>
+      			
+  						<li>
+								<a class="nav flat-box" href="/archives"
+                  
+                    rel="nofollow"
+                  
+                  
+                  id="archives">
+									<i class='fas fa-archive fa-fw'></i>&nbsp;归档
+								</a>
+							</li>
+      			
+      		
+				</ul>
+			</div>
+
+			
+				<div class="m_search">
+					<form name="searchform" class="form u-search-form">
+						<input type="text" class="input u-search-input" placeholder="搜索" />
+						<i class="icon fas fa-search fa-fw"></i>
+					</form>
+				</div>
+			
+			<ul class='switcher h-list'>
+				
+					<li class='s-search'><a class="fas fa-search fa-fw" href='javascript:void(0)'></a></li>
+				
+				<li class='s-menu'><a class="fas fa-bars fa-fw" href='javascript:void(0)'></a></li>
+			</ul>
+		</div>
+
+		<div class='nav-sub container container--flex'>
+			<a class="logo flat-box"></a>
+			<ul class='switcher h-list'>
+				<li class='s-comment'><a class="flat-btn fas fa-comments fa-fw" href='javascript:void(0)'></a></li>
+        
+          <li class='s-toc'><a class="flat-btn fas fa-list fa-fw" href='javascript:void(0)'></a></li>
+        
+			</ul>
+		</div>
+	</div>
+</header>
+	<aside class="menu-phone">
+    <header>
+		<nav class="menu navgation">
+      <ul>
+        
+          
+            <li>
+							<a class="nav flat-box" href="/"
+                
+                
+                id="home">
+								<i class='fas fa-clock fa-fw'></i>&nbsp;近期文章
+							</a>
+            </li>
+          
+            <li>
+							<a class="nav flat-box" href="/categories"
+                
+                  rel="nofollow"
+                
+                
+                id="categories">
+								<i class='fas fa-folder-open fa-fw'></i>&nbsp;分类
+							</a>
+            </li>
+          
+            <li>
+							<a class="nav flat-box" href="/tags"
+                
+                  rel="nofollow"
+                
+                
+                id="tags">
+								<i class='fas fa-hashtag fa-fw'></i>&nbsp;标签
+							</a>
+            </li>
+          
+            <li>
+							<a class="nav flat-box" href="/archives"
+                
+                  rel="nofollow"
+                
+                
+                id="archives">
+								<i class='fas fa-archive fa-fw'></i>&nbsp;归档
+							</a>
+            </li>
+          
+       
+      </ul>
+		</nav>
+    </header>
+	</aside>
+<script>setLoadingBarProgress(40);</script>
+
+
+
+  <div class="l_body nocover">
+    <div class='body-wrapper'>
+      <div class='l_main'>
+  
+
+  <article id="post" class="post white-box article-type-post" itemscope itemprop="blogPost">
+    
+
+
+  <section class='meta'>
+    
+    
+    <div class="meta" id="header-meta">
+      
+        
+  
+    <h1 class="title">
+      <a href="/2020/03/16/RTOS/">
+        RTOS
+      </a>
+    </h1>
+  
+
+
+      
+      <div class='new-meta-box'>
+        
+          
+        
+          
+            
+  <div class='new-meta-item author'>
+    
+      <a href="http://yoursite.com" rel="nofollow">
+        
+          <i class="fas fa-user" aria-hidden="true"></i>
+        
+        <p>Huihang Lai</p>
+      </a>
+    
+  </div>
+
+
+          
+        
+          
+            <div class="new-meta-item date">
+  <a class='notlink'>
+    <i class="fas fa-calendar-alt" aria-hidden="true"></i>
+    <p>2020-03-16</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+  
+  <div class='new-meta-item category'>
+    <a href='/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/' rel="nofollow">
+      <i class="fas fa-folder-open" aria-hidden="true"></i>
+      <p>操作系统</p>
+    </a>
+  </div>
+
+
+          
+        
+          
+            
+  
+    <div class="new-meta-item browse busuanzi">
+      <a class='notlink'>
+        <i class="fas fa-eye" aria-hidden="true"></i>
+        <p>
+          <span id="busuanzi_value_page_pv">
+            <i class="fas fa-spinner fa-spin fa-fw" aria-hidden="true"></i>
+          </span>
+        </p>
+      </a>
+    </div>
+  
+
+
+          
+        
+          
+            
+  
+    <div class="new-meta-item wordcount">
+      <a class='notlink'>
+        <i class="fas fa-keyboard" aria-hidden="true"></i>
+        <p>字数统计:</p>
+        <p>3.2k字</p>
+      </a>
+    </div>
+    <div class="new-meta-item readtime">
+      <a class='notlink'>
+        <i class="fas fa-hourglass-half" aria-hidden="true"></i>
+        <p>阅读时长≈</p>
+        <p>13分</p>
+      </a>
+    </div>
+  
+
+          
+        
+          
+            
+
+          
+        
+      </div>
+      
+        <hr>
+      
+    </div>
+  </section>
+
+
+    <section class="article typo">
+      <div class="article-entry" itemprop="articleBody">
+        <h1 id="MY-RTOS"><a href="#MY-RTOS" class="headerlink" title="MY RTOS"></a>MY RTOS</h1><p>这篇文章参考FREE RTOS的源码以及野火的FREE RTOS的书，只实现了支持多优先级的任务调度。</p>
+<h2 id="数据结构"><a href="#数据结构" class="headerlink" title="数据结构"></a>数据结构</h2><ul>
+<li><p>RTOS基本的数据类型是双向链表，通过许多不同的双向链表，我们可以实现对多优先级的支持，链表节点数据结构定义如下：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">xLIST_ITEM</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">	TickType_t xItemValue;             <span class="comment">/* 辅助值，用于帮助节点做顺序排列 */</span>			</span><br><span class="line">	<span class="class"><span class="keyword">struct</span> <span class="title">xLIST_ITEM</span> *  <span class="title">pxNext</span>;</span>       <span class="comment">/* 指向链表下一个节点 */</span>	</span><br><span class="line">	<span class="class"><span class="keyword">struct</span> <span class="title">xLIST_ITEM</span> *  <span class="title">pxPrevious</span>;</span>   <span class="comment">/* 指向链表前一个节点 */</span></span><br><span class="line">	<span class="keyword">void</span> * pvOwner;					   <span class="comment">/* 指向拥有该节点的内核对象，通常是TCB */</span></span><br><span class="line">	<span class="keyword">void</span> *  pvContainer;		       <span class="comment">/* 指向该节点所在的链表 */</span></span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">xLIST_ITEM</span> <span class="title">ListItem_t</span>;</span>  <span class="comment">/* 节点数据类型重定义 */</span></span><br></pre></td></tr></table></figure>
+<p><img src="https://tva1.sinaimg.cn/large/00831rSTly1gcvvnb8pk0j30lu0fqjrk.jpg" alt=""></p>
+</li>
+<li><p>链表节点ListItem_t总共有5个成员，但是初始化的时候只需将pvContainer初始化为空即可，表示该节点还没有插入到任何链表：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*链表节点初始化*/</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">vListInitialiseItem</span><span class="params">( ListItem_t * <span class="keyword">const</span> pxItem )</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="comment">/* 初始化该节点所在的链表为空，表示节点还没有插入任何链表 */</span></span><br><span class="line">	pxItem-&gt;pvContainer = <span class="literal">NULL</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><img src="https://tva1.sinaimg.cn/large/00831rSTly1gcvvo732tvj30ke0fwmxc.jpg" alt=""></p>
+</li>
+<li><p>链表根节点，因为双向链表结尾相连，头即是尾巴，尾即是头：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">xMINI_LIST_ITEM</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">	TickType_t xItemValue;                      <span class="comment">/* 链表节点计数器 */</span></span><br><span class="line">	<span class="class"><span class="keyword">struct</span> <span class="title">xLIST_ITEM</span> *  <span class="title">pxNext</span>;</span>                <span class="comment">/* 链表节点索引指针 */</span></span><br><span class="line">	<span class="class"><span class="keyword">struct</span> <span class="title">xLIST_ITEM</span> *  <span class="title">pxPrevious</span>;</span>            <span class="comment">/* 链表最后一个节点 */</span></span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">xMINI_LIST_ITEM</span> <span class="title">MiniListItem_t</span>;</span>  <span class="comment">/* 精简节点数据类型重定义 */</span></span><br></pre></td></tr></table></figure>
+<p><img src="https://tva1.sinaimg.cn/large/00831rSTly1gcvvor8x6pj30mi0hcjrl.jpg" alt=""></p>
+<ul>
+<li><p>链表操作</p>
+<ul>
+<li><p>链表根节点的初始化：</p>
+<figure class="highlight xl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">void vListInitialise( List_t * const pxList )</span><br><span class="line">&#123;</span><br><span class="line">	<span class="comment">/* 将链表索引指针指向最后一个节点 */</span></span><br><span class="line">	<span class="function"><span class="title">pxList</span>-&gt;</span><span class="function"><span class="title">pxIndex</span> = ( ListItem_t * ) &amp;( pxList-&gt;</span>xListEnd );</span><br><span class="line"></span><br><span class="line">	<span class="comment">/* 将链表最后一个节点的辅助排序的值设置为最大，确保该节点就是链表的最后节点 */</span></span><br><span class="line">	<span class="function"><span class="title">pxList</span>-&gt;</span>xListEnd.xItemValue = portMAX_DELAY;</span><br><span class="line"></span><br><span class="line">	<span class="comment">/* 将最后一个节点的pxNext和pxPrevious指针均指向节点自身，表示链表为空 */</span></span><br><span class="line">	<span class="function"><span class="title">pxList</span>-&gt;</span><span class="function"><span class="title">xListEnd</span>.pxNext = ( ListItem_t * ) &amp;( pxList-&gt;</span>xListEnd );</span><br><span class="line">	<span class="function"><span class="title">pxList</span>-&gt;</span><span class="function"><span class="title">xListEnd</span>.pxPrevious = ( ListItem_t * ) &amp;( pxList-&gt;</span>xListEnd );</span><br><span class="line"></span><br><span class="line">	<span class="comment">/* 初始化链表节点计数器的值为0，表示链表为空 */</span></span><br><span class="line">	<span class="function"><span class="title">pxList</span>-&gt;</span>uxNumberOfItems = ( UBaseType_t ) <span class="number">0</span>U;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><img src="https://tva1.sinaimg.cn/large/00831rSTly1gcvvp89xr0j30kc0eiaa7.jpg" alt=""></p>
+</li>
+<li><p>将普通的链表插入根节点的尾部(一开始初始化的时候只有根节点)：</p>
+<figure class="highlight xl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">void vListInsertEnd( List_t * const pxList, ListItem_t * const pxNewListItem )</span><br><span class="line">&#123;</span><br><span class="line">	L<span class="function"><span class="title">istItem_t</span> * const pxIndex = pxList-&gt;</span>pxIndex;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="title">pxNewListItem</span>-&gt;</span>pxNext = pxIndex;</span><br><span class="line">	<span class="function"><span class="title">pxNewListItem</span>-&gt;</span><span class="function"><span class="title">pxPrevious</span> = pxIndex-&gt;</span>pxPrevious;</span><br><span class="line">	<span class="function"><span class="title">pxIndex</span>-&gt;</span><span class="function"><span class="title">pxPrevious</span>-&gt;</span>pxNext = pxNewListItem;</span><br><span class="line">	<span class="function"><span class="title">pxIndex</span>-&gt;</span>pxPrevious = pxNewListItem;</span><br><span class="line"></span><br><span class="line">	<span class="comment">/* 记住该节点所在的链表 */</span></span><br><span class="line">	<span class="function"><span class="title">pxNewListItem</span>-&gt;</span>pvContainer = ( void * ) pxList;</span><br><span class="line"></span><br><span class="line">	<span class="comment">/* 链表节点计数器++ */</span></span><br><span class="line">	( <span class="function"><span class="title">pxList</span>-&gt;</span>uxNumberOfItems )++;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><img src="https://tva1.sinaimg.cn/large/00831rSTly1gcvvrj4a34j30ra0h00t6.jpg" alt=""></p>
+</li>
+<li><p>节点按升序排列插入到链表</p>
+<figure class="highlight xl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">void vListInsert( List_t * const pxList, ListItem_t * const pxNewListItem )</span><br><span class="line">&#123;</span><br><span class="line">	ListItem_t *pxIterator;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">/* 获取节点的排序辅助值 */</span></span><br><span class="line">	<span class="function"><span class="title">const</span> TickType_t xValueOfInsertion = pxNewListItem-&gt;</span>xItemValue;</span><br><span class="line"></span><br><span class="line">	<span class="comment">/* 寻找节点要插入的位置 */</span></span><br><span class="line">	<span class="keyword">if</span>( xValueOfInsertion == portMAX_DELAY )</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="function"><span class="title">pxIterator</span> = pxList-&gt;</span>xListEnd.pxPrevious;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">else</span></span><br><span class="line">	&#123;</span><br><span class="line">		<span class="function"><span class="title">for</span>( pxIterator = ( ListItem_t * ) &amp;( pxList-&gt;</span>xListEnd );</span><br><span class="line">			<span class="function"><span class="title">pxIterator</span>-&gt;</span><span class="function"><span class="title">pxNext</span>-&gt;</span>xItemValue &lt;= xValueOfInsertion; </span><br><span class="line">			<span class="function"><span class="title">pxIterator</span> = pxIterator-&gt;</span>pxNext )</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="comment">/* 没有事情可做，不断迭代只为了找到节点要插入的位置 */</span>			</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">/* 根据升序排列，将节点插入 */</span></span><br><span class="line">	<span class="function"><span class="title">pxNewListItem</span>-&gt;</span><span class="function"><span class="title">pxNext</span> = pxIterator-&gt;</span>pxNext;</span><br><span class="line">	<span class="function"><span class="title">pxNewListItem</span>-&gt;</span><span class="function"><span class="title">pxNext</span>-&gt;</span>pxPrevious = pxNewListItem;</span><br><span class="line">	<span class="function"><span class="title">pxNewListItem</span>-&gt;</span>pxPrevious = pxIterator;</span><br><span class="line">	<span class="function"><span class="title">pxIterator</span>-&gt;</span>pxNext = pxNewListItem;</span><br><span class="line"></span><br><span class="line">	<span class="comment">/* 记住该节点所在的链表 */</span></span><br><span class="line">	<span class="function"><span class="title">pxNewListItem</span>-&gt;</span>pvContainer = ( void * ) pxList;</span><br><span class="line"></span><br><span class="line">	<span class="comment">/* 链表节点计数器++ */</span></span><br><span class="line">	( <span class="function"><span class="title">pxList</span>-&gt;</span>uxNumberOfItems )++;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><img src="https://tva1.sinaimg.cn/large/00831rSTly1gcvvz6pnvrj311e0duwep.jpg" alt=""></p>
+</li>
+<li><p>将节点从链表删除</p>
+<figure class="highlight xl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">UBaseType_t uxListRemove( ListItem_t * const pxItemToRemove )</span><br><span class="line">&#123;</span><br><span class="line">	<span class="comment">/* 获取节点所在的链表 */</span></span><br><span class="line">	L<span class="function"><span class="title">ist_t</span> * const pxList = ( List_t * ) pxItemToRemove-&gt;</span>pvContainer;</span><br><span class="line"></span><br><span class="line">	<span class="comment">/* 将指定的节点从链表删除 */</span></span><br><span class="line">	<span class="function"><span class="title">pxItemToRemove</span>-&gt;</span><span class="function"><span class="title">pxNext</span>-&gt;</span><span class="function"><span class="title">pxPrevious</span> = pxItemToRemove-&gt;</span>pxPrevious;</span><br><span class="line">	<span class="function"><span class="title">pxItemToRemove</span>-&gt;</span><span class="function"><span class="title">pxPrevious</span>-&gt;</span><span class="function"><span class="title">pxNext</span> = pxItemToRemove-&gt;</span>pxNext;</span><br><span class="line"></span><br><span class="line">	<span class="comment">/* 调整链表的节点索引指针 */</span></span><br><span class="line">	<span class="function"><span class="title">if</span>( pxList-&gt;</span>pxIndex == pxItemToRemove )</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="function"><span class="title">pxList</span>-&gt;</span><span class="function"><span class="title">pxIndex</span> = pxItemToRemove-&gt;</span>pxPrevious;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">/* 初始化该节点所在的链表为空，表示节点还没有插入任何链表 */</span></span><br><span class="line">	<span class="function"><span class="title">pxItemToRemove</span>-&gt;</span>pvContainer = NULL;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">/* 链表节点计数器-- */</span></span><br><span class="line">	( <span class="function"><span class="title">pxList</span>-&gt;</span>uxNumberOfItems )--;</span><br><span class="line"></span><br><span class="line">	<span class="comment">/* 返回链表中剩余节点的个数 */</span></span><br><span class="line">	<span class="function"><span class="title">return</span> pxList-&gt;</span>uxNumberOfItems;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><img src="https://tva1.sinaimg.cn/large/00831rSTly1gcvw4f8famj311a0dwmxd.jpg" alt=""></p>
+</li>
+<li><p>链表的宏函数</p>
+<figure class="highlight livescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* 初始化节点的拥有者 */</span></span><br><span class="line"><span class="comment">#define listSET_LIST_ITEM_OWNER( pxListItem, pxOwner )		( ( pxListItem )-&gt;pvOwner = ( void * ) ( pxOwner ) )</span></span><br><span class="line"><span class="comment">/* 获取节点拥有者 */</span></span><br><span class="line"><span class="comment">#define listGET_LIST_ITEM_OWNER( pxListItem )	( ( pxListItem )-&gt;pvOwner )</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/* 初始化节点排序辅助值 */</span></span><br><span class="line"><span class="comment">#define listSET_LIST_ITEM_VALUE( pxListItem, xValue )	( ( pxListItem )-&gt;xItemValue = ( xValue ) )</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/* 获取节点排序辅助值 */</span></span><br><span class="line"><span class="comment">#define listGET_LIST_ITEM_VALUE( pxListItem )	( ( pxListItem )-&gt;xItemValue )</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/* 获取链表根节点的节点计数器的值 */</span></span><br><span class="line"><span class="comment">#define listGET_ITEM_VALUE_OF_HEAD_ENTRY( pxList )	( ( ( pxList )-&gt;xListEnd ).pxNext-&gt;xItemValue )</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/* 获取链表的入口节点 */</span></span><br><span class="line"><span class="comment">#define listGET_HEAD_ENTRY( pxList )	( ( ( pxList )-&gt;xListEnd ).pxNext )</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/* 获取节点的下一个节点 */</span></span><br><span class="line"><span class="comment">#define listGET_NEXT( pxListItem )	( ( pxListItem )-&gt;pxNext )</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/* 获取链表的最后一个节点 */</span></span><br><span class="line"><span class="comment">#define listGET_END_MARKER( pxList )	( ( ListItem_t const * ) ( &amp;( ( pxList )-&gt;xListEnd ) ) )</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/* 判断链表是否为空 */</span></span><br><span class="line"><span class="comment">#define listLIST_IS_EMPTY( pxList )	( ( BaseType_t ) ( ( pxList )-&gt;uxNumberOfItems == ( UBaseType_t ) 0 ) )</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/* 当前链表长度 */</span></span><br><span class="line"><span class="comment">#define listCURRENT_LIST_LENGTH( pxList )	( ( pxList )-&gt;uxNumberOfItems )</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/* 获取链表第一个节点的OWNER，即TCB */</span></span><br><span class="line"><span class="comment">#define listGET_OWNER_OF_NEXT_ENTRY( pxTCB, pxList )										\</span></span><br><span class="line">&#123;																							<span class="string">\</span></span><br><span class="line">	List_t * <span class="keyword">const</span> pxConstList = ( pxList );											    <span class="string">\</span></span><br><span class="line">	<span class="comment">/* 节点索引指向链表第一个节点 */</span><span class="string">\</span></span><br><span class="line">	<span class="function"><span class="params">( pxConstList )</span>-&gt;</span><span class="function"><span class="title">pxIndex</span> = <span class="params">( pxConstList )</span>-&gt;</span>pxIndex-&gt;pxNext;							<span class="string">\</span></span><br><span class="line">	<span class="comment">/* 这个操作有啥用？ */</span>                                                                       <span class="string">\</span></span><br><span class="line">	<span class="keyword">if</span><span class="function"><span class="params">( ( <span class="literal">void</span> * ) ( pxConstList )-&gt;pxIndex == ( <span class="literal">void</span> * ) &amp;( ( pxConstList )-&gt;xListEnd ) )</span>	\</span></span><br><span class="line"><span class="function">	&#123;																						\</span></span><br><span class="line"><span class="function">		<span class="params">( pxConstList )</span>-&gt;</span><span class="function"><span class="title">pxIndex</span> = <span class="params">( pxConstList )</span>-&gt;</span>pxIndex-&gt;pxNext;						<span class="string">\</span></span><br><span class="line">	&#125;																						<span class="string">\</span></span><br><span class="line">	<span class="comment">/* 获取节点的OWNER，即TCB */</span>                                                             <span class="string">\</span></span><br><span class="line">	<span class="function"><span class="params">( pxTCB )</span> = <span class="params">( pxConstList )</span>-&gt;</span>pxIndex-&gt;pvOwner;											 <span class="string">\</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h1 id="任务创建"><a href="#任务创建" class="headerlink" title="任务创建"></a>任务创建</h1><ul>
+<li>在多任务系统中，每个任务都是独立的，互不干扰的，因此要给每个任务分配独立的栈空间，这个栈空间通常是一个预先定义好的全局数组，也可以是动态分配的一段内存空间，但它们都存在于RAM中。</li>
+<li>在多任务系统中，任务的执行是由系统调度的。系统为了顺利的调度任务，为每个任务都额外定义了一个<code>任务控制块(TCB)</code>，这个任务控制块就相当于任务的身份证，里面存有任务的所有信息，比如任务的栈指针，任务名称，任务的形参等。有了这个任务控制块之后，以后系统对任务的全部操作都可以通过这个任务控制块来实现。<ul>
+<li>任务控制块声明：<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"> <span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">tskTaskControlBlock</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">	<span class="keyword">volatile</span> StackType_t    *pxTopOfStack;    <span class="comment">/* 栈顶 */</span></span><br><span class="line"></span><br><span class="line">	ListItem_t			    xStateListItem;   <span class="comment">/* 任务节点 */</span></span><br><span class="line">	</span><br><span class="line">	StackType_t             *pxStack;         <span class="comment">/* 任务栈起始地址 */</span></span><br><span class="line">											<span class="comment">/* 任务名称，字符串形式 */</span></span><br><span class="line">	<span class="keyword">char</span>                    pcTaskName[ configMAX_TASK_NAME_LEN ];</span><br><span class="line"></span><br><span class="line">	TickType_t xTicksToDelay;   </span><br><span class="line">&#125;TCB_T;</span><br></pre></td></tr></table></figure></li>
+<li>xTaskCreateStatic()函数<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"> <span class="function">TaskHandle_t <span class="title">xTaskCreateStatic</span><span class="params">(	TaskFunction_t pxTaskCode,           <span class="comment">/* 任务代码块 */</span></span></span></span><br><span class="line"><span class="function"><span class="params">				            <span class="keyword">const</span> <span class="keyword">char</span> * <span class="keyword">const</span> pcName,           <span class="comment">/* 任务名称 */</span></span></span></span><br><span class="line"><span class="function"><span class="params">				            <span class="keyword">const</span> <span class="keyword">uint32_t</span> ulStackDepth,         <span class="comment">/* 栈深度 */</span></span></span></span><br><span class="line"><span class="function"><span class="params">				            <span class="keyword">void</span> * <span class="keyword">const</span> pvParameters,           <span class="comment">/* 任务形参 */</span></span></span></span><br><span class="line"><span class="function"><span class="params">				            StackType_t * <span class="keyword">const</span> puxStackBuffer,  <span class="comment">/* 任务栈起始地址 */</span></span></span></span><br><span class="line"><span class="function"><span class="params">				            TCB_t * <span class="keyword">const</span> pxTaskBuffer )</span>  <span class="comment">/* 任务控制块指针 */</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	TCB_t *pxNewTCB;</span><br><span class="line">	TaskHandle_t xReturn;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">if</span>( ( pxTaskBuffer != <span class="literal">NULL</span> ) &amp;&amp; ( puxStackBuffer != <span class="literal">NULL</span> ) )</span><br><span class="line">	&#123;		</span><br><span class="line">		pxNewTCB = ( TCB_t * ) pxTaskBuffer; </span><br><span class="line">		pxNewTCB-&gt;pxStack = ( StackType_t * ) puxStackBuffer;</span><br><span class="line"></span><br><span class="line">		<span class="comment">/* 创建新的任务 */</span></span><br><span class="line">		prvInitialiseNewTask( pxTaskCode, pcName, ulStackDepth, pvParameters, &amp;xReturn, pxNewTCB);        </span><br><span class="line"></span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">else</span></span><br><span class="line">	&#123;</span><br><span class="line">		xReturn = <span class="literal">NULL</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">/* 返回任务句柄，如果任务创建成功，此时xReturn应该指向任务控制块 */</span></span><br><span class="line">	<span class="keyword">return</span> xReturn;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>prvInitialiseNewTask()函数(真正的任务创建函数)<figure class="highlight angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"> static <span class="built_in">void</span> prvInitialiseNewTask( 	TaskFunction_t pxTaskCode,              <span class="comment">/* 任务入口 */</span></span><br><span class="line">								<span class="keyword">const</span> char * <span class="keyword">const</span> pcName,              <span class="comment">/* 任务名称 */</span></span><br><span class="line">								<span class="keyword">const</span> <span class="built_in">uint</span>32_t ulStackDepth,            <span class="comment">/* 任务栈大小 */</span></span><br><span class="line">								<span class="built_in">void</span> * <span class="keyword">const</span> pvParameters,              <span class="comment">/* 任务形参 */</span></span><br><span class="line">								TaskHandle_t * <span class="keyword">const</span> pxCreatedTask,     <span class="comment">/* 任务句柄 */</span></span><br><span class="line">								TCB_t *pxNewTCB )                       <span class="comment">/* 任务栈起始地址 */</span></span><br><span class="line"></span><br><span class="line">&#123;</span><br><span class="line">	StackType_t *pxTopOfStack;</span><br><span class="line">	UBaseType_t x;	</span><br><span class="line">	</span><br><span class="line">	<span class="comment">/* 获取栈顶地址 */</span></span><br><span class="line">	pxTopOfStack = pxNewTCB-&gt;pxStack + ( ulStackDepth - ( <span class="built_in">uint</span>32_t ) <span class="number">1</span> );</span><br><span class="line">	<span class="comment">//pxTopOfStack = ( StackType_t * ) ( ( ( portPOINTER_SIZE_TYPE ) pxTopOfStack ) &amp; ( ~( ( portPOINTER_SIZE_TYPE ) portBYTE_ALIGNMENT_MASK ) ) );</span></span><br><span class="line">	<span class="comment">/* 向下做8字节对齐 */</span></span><br><span class="line">	pxTopOfStack = ( StackType_t * ) ( ( ( <span class="built_in">uint</span>32_t ) pxTopOfStack ) &amp; ( ~( ( <span class="built_in">uint</span>32_t ) <span class="number">0x0007</span> ) ) );	</span><br><span class="line"></span><br><span class="line">	<span class="comment">/* 将任务的名字存储在TCB中 */</span></span><br><span class="line">	<span class="keyword">for</span>( x = ( UBaseType_t ) <span class="number">0</span>; x &lt; ( UBaseType_t ) configMAX_TASK_NAME_LEN; x++ )</span><br><span class="line">	&#123;</span><br><span class="line">		pxNewTCB-&gt;pcTaskName[ x ] = pcName[ x ];</span><br><span class="line"></span><br><span class="line">		<span class="keyword">if</span>( pcName[ x ] == <span class="number">0x00</span> )</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">break</span>;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">/* 任务名字的长度不能超过configMAX_TASK_NAME_LEN */</span></span><br><span class="line">	pxNewTCB-&gt;pcTaskName[ configMAX_TASK_NAME_LEN - <span class="number">1</span> ] = <span class="string">'\0'</span>;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">/* 初始化任务栈 */</span></span><br><span class="line">	vListInitialiseItem( &amp;( pxNewTCB-&gt;xStateListItem ) );</span><br><span class="line">	<span class="comment">/* 初始化TCB中的xStateListItem节点 */</span></span><br><span class="line">	listSET_LIST_ITEM_OWNER( &amp;( pxNewTCB-&gt;xStateListItem ), pxNewTCB );</span><br><span class="line"></span><br><span class="line">	<span class="comment">/* 初始化任务栈 */</span></span><br><span class="line">	pxNewTCB-&gt;pxTopOfStack = pxPortInitialiseStack( pxTopOfStack, pxTaskCode, pvParameters );</span><br><span class="line">	</span><br><span class="line">	<span class="comment">/* 让任务句柄指向任务控制块 */</span></span><br><span class="line">	<span class="keyword">if</span>( ( <span class="built_in">void</span> * ) pxCreatedTask != NULL )</span><br><span class="line">	&#123;		</span><br><span class="line">		*pxCreatedTask = ( TaskHandle_t ) pxNewTCB;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>pxPortInitialiseStack()函数(初始化任务栈函数)<figure class="highlight nix"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"> StackType_t *pxPortInitialiseStack( StackType_t *pxTopOfStack, TaskFunction_t pxCode, void *pvParameters )</span><br><span class="line">&#123;</span><br><span class="line">	<span class="comment">/* 异常发生时，自动加载到CPU寄存器的内容 */</span></span><br><span class="line">	pxTopOfStack--;</span><br><span class="line">	*<span class="attr">pxTopOfStack</span> = portINITIAL_XPSR;	                                    <span class="comment">/* xPSR的bit24必须置1 */</span></span><br><span class="line">	pxTopOfStack--;</span><br><span class="line">	*<span class="attr">pxTopOfStack</span> = ( ( StackType_t ) pxCode ) &amp; portSTART_ADDRESS_MASK;	<span class="comment">/* PC，即任务入口函数 */</span></span><br><span class="line">	pxTopOfStack--;</span><br><span class="line">	*<span class="attr">pxTopOfStack</span> = ( StackType_t ) prvTaskExitError;	                    <span class="comment">/* LR，函数返回地址 */</span></span><br><span class="line"></span><br><span class="line">	pxTopOfStack <span class="attr">-=</span> <span class="number">5</span>;	<span class="comment">/* R12, R3, R2 and R1 默认初始化为0 */</span></span><br><span class="line">	*<span class="attr">pxTopOfStack</span> = ( StackType_t ) pvParameters;	                        <span class="comment">/* 异常发生时，手动加载到CPU寄存器的内容 */</span></span><br><span class="line">	pxTopOfStack <span class="attr">-=</span> <span class="number">8</span>;	</span><br><span class="line"></span><br><span class="line">	return pxTopOfStack;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>栈分布图：<br><img src="https://tva1.sinaimg.cn/large/00831rSTly1gcw33h193wj311i0hgq3q.jpg" alt=""><br>异常发生时，CPU自动从栈中加载到CPU寄存器的内容。包括8个寄存器，分别为R0、R1、R2、R3、R12、R14、R15和xPSR的位24，且顺序不能变。<br>xPSR的bit24必须置1，即0x01000000。<br>任务的返回地址，通常任务是不会返回的，如果返回了就跳转到prvTaskExitError，该函数是一个无限循环。<br>R12, R3, R2 and R1 默认初始化为0。<br>异常发生时，需要手动加载到CPU寄存器的内容，总共有8个，分别为R4、R5、R6、R7、R8、R9、R10和R11，默认初始化为0。</li>
+</ul>
+</li>
+<li>任务创建完后我们需要把任务添加到就绪列表里面，表示任务已经就绪，系统随时可以调度。  <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* 任务就绪列表 */</span></span><br><span class="line"><span class="selector-tag">List_t</span> <span class="selector-tag">pxReadyTasksLists</span><span class="selector-attr">[ configMAX_PRIORITIES ]</span>;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>就绪列表实际上就是一个List_t类型的数组，数组的大小由决定最大任务优先级的宏configMAX_PRIORITIES决定，configMAX_PRIORITIES在FreeRTOSConfig.h中默认定义为5，最大支持256个优先级。数组的下标对应了任务的优先级，同一优先级的任务统一插入到就绪列表的同一条链表中。空就绪列表如下图：<br><img src="https://tva1.sinaimg.cn/large/00831rSTly1gcw3jjkvnyj30n60n8wf3.jpg" alt=""></li>
+<li>就绪列表初始化<figure class="highlight reasonml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">void prv<span class="constructor">InitialiseTaskLists( <span class="params">void</span> )</span></span><br><span class="line">&#123;</span><br><span class="line">	UBaseType_t uxPriority;</span><br><span class="line">	</span><br><span class="line">	</span><br><span class="line">	for( uxPriority = ( UBaseType_t ) <span class="number">0</span>U; uxPriority &lt; ( UBaseType_t ) configMAX_PRIORITIES; uxPriority++ )</span><br><span class="line">	&#123;</span><br><span class="line">		v<span class="constructor">ListInitialise( &amp;( <span class="params">pxReadyTasksLists</span>[ <span class="params">uxPriority</span> ] )</span> );</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+就绪列表初始化之后：<br><img src="https://tva1.sinaimg.cn/large/00831rSTly1gcw3mu6rvxj30ja0q8dgh.jpg" alt=""></li>
+<li>将任务插入到就绪列表<br>任务控制块里面有一个<code>xStateListItem成员</code>，数据类型为ListItem_t，我们将任务插入到就绪列表里面，就是通过将任务控制块的xStateListItem这个节点插入到就绪列表中来实现的。如果把就绪列表比作是晾衣架，任务是衣服，那xStateListItem就是晾衣架上面的钩子，每个任务都自带晾衣架钩子，就是为了把自己挂在各种不同的链表中。<figure class="highlight livescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* 初始化与任务相关的列表，如就绪列表 */</span></span><br><span class="line">prvInitialiseTaskLists();</span><br><span class="line"></span><br><span class="line">Task1_Handle =									<span class="comment">/* 任务句柄 */</span></span><br><span class="line">xTaskCreateStatic((TaskFunction_t)Task1_Entry,</span><br><span class="line">				   (char *)<span class="string">"Task1"</span>,</span><br><span class="line">				   (uint32_t)TASK1_STACK_SIZE ,</span><br><span class="line">				   (<span class="literal">void</span> *) NULL,</span><br><span class="line">				   (StackType_t *)Task1Stack,</span><br><span class="line">				   (TCB_t *)&amp;Task1TCB );</span><br><span class="line"></span><br><span class="line"><span class="comment">/* 将任务添加到就绪列表 */</span></span><br><span class="line">vListInsertEnd( &amp;( pxReadyTasksLists[<span class="number">1</span>] ),</span><br><span class="line">				&amp;<span class="function"><span class="params">( ((TCB_t *)(&amp;Task1TCB))-&gt;xStateListItem )</span> );</span></span><br><span class="line"><span class="function"></span></span><br><span class="line"><span class="function"><span class="title">Task2_Handle</span> = /* 任务句柄 */</span></span><br><span class="line"><span class="function"><span class="title">xTaskCreateStatic</span><span class="params">((TaskFunction_t)Task2_Entry, /* 任务入口 */</span></span></span><br><span class="line"><span class="function"><span class="params">				   (char *)<span class="string">"Task2"</span>, /* 任务名称，字符串形式 */</span></span></span><br><span class="line"><span class="function"><span class="params">				   (uint32_t)TASK2_STACK_SIZE , /* 任务栈大小，单位为字 */</span></span></span><br><span class="line"><span class="function"><span class="params">				   (<span class="literal">void</span> *) NULL, /* 任务形参 */</span></span></span><br><span class="line"><span class="function"><span class="params">				   (StackType_t *)Task2Stack, /* 任务栈起始地址 */</span></span></span><br><span class="line"><span class="function"><span class="params">				   (TCB_t *)&amp;Task2TCB )</span>; /* 任务控制块 */</span></span><br><span class="line"><span class="function">/* 将任务添加到就绪列表 */</span></span><br><span class="line"><span class="function"><span class="title">vListInsertEnd</span><span class="params">( &amp;( pxReadyTasksLists[<span class="number">2</span>] ),</span></span></span><br><span class="line"><span class="function"><span class="params">				&amp;( ((TCB_t *)(&amp;Task2TCB))-&gt;xStateListItem ) )</span>;</span></span><br></pre></td></tr></table></figure>
+任务插入到就绪列表示意图：<br><img src="https://tva1.sinaimg.cn/large/00831rSTly1gcw58sz1snj30te0p0aav.jpg" alt=""></li>
+</ul>
+</li>
+<li>实现任务调度器<br>调度器是操作系统的核心，其主要功能就是实现任务的切换，即从就绪列表里面找到优先级最高的任务，然后去执行该任务。从代码上来看，调度器无非也就是由几个全局变量和一些可以实现任务切换的函数组成。<ul>
+<li>vTaskStartScheduler()函数<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">vTaskStartScheduler</span><span class="params">( <span class="keyword">void</span> )</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line"> <span class="comment">/* 手动指定第一个运行的任务 */</span></span><br><span class="line"> pxCurrentTCB = &amp;Task1TCB; <span class="comment">//pxCurrentTCB是一个全局指针</span></span><br><span class="line"></span><br><span class="line"> <span class="comment">/* 启动调度器 */</span></span><br><span class="line"> <span class="keyword">if</span> ( xPortStartScheduler() != pdFALSE )</span><br><span class="line"> &#123;</span><br><span class="line">  <span class="comment">/* 调度器启动成功，则不会返回，即不会来到这里 */</span></span><br><span class="line"> &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>xPortStartScheduler()函数<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">/*</span><br><span class="line"><span class="bullet">* </span>在Cortex-M中，内核外设SCB中SHPR3寄存器用于设置SysTick和PendSV的异常优先级</span><br><span class="line"><span class="bullet">* </span>System handler priority register 3 (SCB<span class="emphasis">_SHPR3) SCB_</span>SHPR3：0xE000 ED20</span><br><span class="line"><span class="bullet">* </span>Bits 31:24 PRI_15[7:0]: Priority of system handler 15, SysTick exception</span><br><span class="line"><span class="bullet">* </span>Bits 23:16 PRI_14[7:0]: Priority of system handler 14, PendSV</span><br><span class="line"></span><br><span class="line"><span class="section">#define portNVIC_SYSPRI2_REG (*(( volatile uint32_t *) 0xe000ed20))</span></span><br><span class="line"><span class="section">#define portNVIC_PENDSV_PRI (((uint32_t) configKERNEL_INTERRUPT_PRIORITY ) &lt;&lt; 16UL)</span></span><br><span class="line"><span class="section">#define portNVIC_SYSTICK_PRI (((uint32_t) configKERNEL_INTERRUPT_PRIORITY ) &lt;&lt; 24UL )</span></span><br><span class="line"></span><br><span class="line">BaseType_t xPortStartScheduler( void )</span><br><span class="line">&#123;</span><br><span class="line"> /<span class="emphasis">* 配置PendSV 和 SysTick 的中断优先级为最低 *</span>/</span><br><span class="line"> portNVIC<span class="emphasis">_SYSPRI2_</span>REG |= portNVIC<span class="emphasis">_PENDSV_</span>PRI;</span><br><span class="line"> portNVIC<span class="emphasis">_SYSPRI2_</span>REG |= portNVIC<span class="emphasis">_SYSTICK_</span>PRI;</span><br><span class="line"></span><br><span class="line"> /<span class="emphasis">* 启动第一个任务，不再返回 *</span>/</span><br><span class="line"> prvStartFirstTask();</span><br><span class="line"></span><br><span class="line"> /<span class="emphasis">* 不应该运行到这里 *</span>/</span><br><span class="line"> return 0;</span><br><span class="line">&#125;</span><br><span class="line">*/</span><br></pre></td></tr></table></figure>
+配置PendSV和SysTick的中断优先级为最低，。SysTick和PendSV都会涉及到系统调度，系统调度的优先级要低于系统的其它硬件中断优先级，即优先相应系统中的外部硬件中断，所以SysTick和PendSV的中断优先级配置为最低。</li>
+<li>prvStartFirstTask()函数(开始第一个任务)<figure class="highlight armasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="symbol">__asm</span> void prvStartFirstTask( void )</span><br><span class="line">&#123;</span><br><span class="line"> <span class="meta">PRESERVE8</span></span><br><span class="line"> <span class="comment">/* 在Cortex-M中，0xE000ED08是SCB_VTOR这个寄存器的地址，</span></span><br><span class="line"><span class="comment"> 	 里面存放的是向量表的起始地址，即MSP的地址 */</span></span><br><span class="line"> <span class="keyword">ldr </span><span class="built_in">r0</span>, <span class="number">=0xE000ED08</span></span><br><span class="line"> <span class="keyword">ldr </span><span class="built_in">r0</span>, [<span class="built_in">r0</span>]</span><br><span class="line"> <span class="keyword">ldr </span><span class="built_in">r0</span>, [<span class="built_in">r0</span>]</span><br><span class="line"></span><br><span class="line"> <span class="comment">/* 设置主堆栈指针msp的值 */</span></span><br><span class="line"> <span class="keyword">msr </span>msp, <span class="built_in">r0</span></span><br><span class="line"></span><br><span class="line"> <span class="comment">/* 使能全局中断 */</span></span><br><span class="line"> <span class="keyword">cpsie </span>i</span><br><span class="line"> <span class="keyword">cpsie </span>f</span><br><span class="line"> <span class="keyword">dsb</span></span><br><span class="line"><span class="keyword"> </span><span class="keyword">isb</span></span><br><span class="line"><span class="keyword"></span></span><br><span class="line"><span class="keyword"> </span><span class="comment">/* 调用SVC去启动第一个任务 */</span></span><br><span class="line"> <span class="keyword">svc </span><span class="number">0</span></span><br><span class="line"> <span class="keyword">nop</span></span><br><span class="line"><span class="keyword"> </span><span class="keyword">nop</span></span><br><span class="line"><span class="keyword"></span></span><br><span class="line"><span class="keyword"> </span><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * CPSID I ;PRIMASK=1 ;关中断</span></span><br><span class="line"><span class="comment"> * CPSIE I ;PRIMASK=0 ;开中断</span></span><br><span class="line"><span class="comment"> * CPSID F ;FAULTMASK=1 ;关异常</span></span><br><span class="line"><span class="comment"> * CPSIE F ;FAULTMASK=0 ;开异常</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>Cortex M内核中断屏蔽寄存器组描述<ul>
+<li>PRIMASK ： 这是个只有单一比特的寄存器。 在它被置 1 后，就关掉所有可屏蔽的异常，只剩下 NMI 和硬 FAULT可以响应。它的缺省值是 0，表示没有关中断。</li>
+<li>FAULTMASK ： 这是个只有 1 个位的寄存器。当它置 1 时，只有 NMI 才能响应，所有其它的异常，甚至是硬 FAULT，也通通闭嘴。它的缺省值也是 0，表示没有关异常。</li>
+<li>BASEPRI ： 这个寄存器最多有 9 位（ 由表达优先级的位数决定）。它定义了被屏蔽优先级的阈值。当它被设成某个值后，所有优先级号大于等于此值的中断都被关（优先级号越大，优先级越低）。但若被设成 0，则不关闭任何中断， 0 也是缺省值。</li>
+</ul>
+</li>
+<li></li>
+</ul>
+</li>
+</ul>
+
+      </div>
+      
+        <br>
+        <center>end<br><fancybox></fancybox></center>
+      
+      
+        <br>
+        
+
+
+  <section class='meta' id="footer-meta">
+    <div class='new-meta-box'>
+      
+        
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-03-17T23:00:56+08:00">
+  <a class='notlink'>
+    <i class="fas fa-clock" aria-hidden="true"></i>
+    <p>更新于 2020年3月17日</p>
+  </a>
+</div>
+
+        
+      
+        
+          
+  
+  <div class="new-meta-item meta-tags"><a class="tag" href="/tags/RTOS/" rel="nofollow"><i class="fas fa-tag" aria-hidden="true"></i><p>RTOS</p></a></div>
+
+
+        
+      
+        
+          
+  <div class="new-meta-item share -mob-share-list">
+  <div class="-mob-share-list share-body">
+    
+      
+        <a class="-mob-share-qq" title="QQ好友" rel="external nofollow noopener noreferrer"
+          
+          href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/2020/03/16/RTOS/&title=RTOS | NULL的Blog&summary="
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/xaoxuu/assets@19.1.9/logo/128/qq.png">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-qzone" title="QQ空间" rel="external nofollow noopener noreferrer"
+          
+          href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=http://yoursite.com/2020/03/16/RTOS/&title=RTOS | NULL的Blog&summary="
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/xaoxuu/assets@19.1.9/logo/128/qzone.png">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-weibo" title="微博" rel="external nofollow noopener noreferrer"
+          
+          href="http://service.weibo.com/share/share.php?url=http://yoursite.com/2020/03/16/RTOS/&title=RTOS | NULL的Blog&summary="
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/xaoxuu/assets@19.1.9/logo/128/weibo.png">
+          
+        </a>
+      
+    
+  </div>
+</div>
+
+
+
+        
+      
+    </div>
+  </section>
+
+
+      
+      
+          <div class="prev-next">
+              
+              
+                  <section class="next">
+                      <span class="art-item-right" aria-hidden="true">
+                          <h6>下一页&nbsp;<i class="fas fa-chevron-right" aria-hidden="true"></i></h6>
+                          <h4>
+                              <a href="/2020/03/14/C++%E9%9D%A2%E8%AF%95%E7%9F%A5%E8%AF%86%E7%82%B9/" rel="prev" title="C++面试知识点">
+                                  
+                                      C++面试知识点
+                                  
+                              </a>
+                          </h4>
+                          
+                      </span>
+                  </section>
+              
+          </div>
+      
+    </section>
+  </article>
+
+
+
+  <!-- 显示推荐文章和评论 -->
+
+
+
+  
+
+
+
+
+
+
+<!-- 根据页面mathjax变量决定是否加载MathJax数学公式js -->
+
+
+
+  <script>
+    window.subData = {
+      title: 'RTOS',
+      tools: true
+    }
+  </script>
+
+
+</div>
+<aside class='l_side'>
+  
+    
+    
+      
+      
+        
+          
+          
+            
+              <section class='widget author'>
+  <div class='content pure'>
+    
+      <div class='avatar'>
+        <img class='avatar' src='/img/my.jpeg'/>
+      </div>
+    
+    
+      <div class='text'>
+        
+        
+        
+          <p><span id="jinrishici-sentence">NULL的Blog</span></p>
+          <script src="https://sdk.jinrishici.com/v2/browser/jinrishici.js" charset="utf-8"></script>
+        
+      </div>
+    
+    
+      <div class="social-wrapper">
+        
+          
+            <a href="/laihuihang@foxmail.com"
+              class="social fas fa-envelope flat-btn"
+              target="_blank"
+              rel="external nofollow noopener noreferrer">
+            </a>
+          
+        
+          
+            <a href="https://github.com/laihuihang"
+              class="social fab fa-github flat-btn"
+              target="_blank"
+              rel="external nofollow noopener noreferrer">
+            </a>
+          
+        
+          
+            <a href="https://music.163.com/#/user/home?id=20076790"
+              class="social fas fa-headphones-alt flat-btn"
+              target="_blank"
+              rel="external nofollow noopener noreferrer">
+            </a>
+          
+        
+      </div>
+    
+  </div>
+</section>
+
+            
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+      
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+      
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+      
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+      
+        
+          
+          
+        
+          
+          
+            
+              
+  <section class='widget category'>
+    
+<header class='pure'>
+  <div><i class="fas fa-folder-open fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;文章分类</div>
+  
+    <a class="rightBtn"
+    
+      rel="nofollow"
+    
+    
+    href="/blog/categories/"
+    title="blog/categories/">
+    <i class="fas fa-expand-arrows-alt fa-fw"></i></a>
+  
+</header>
+
+    <div class='content pure'>
+      <ul class="entry">
+        
+          <li><a class="flat-box" title="/categories/My-bootloader/" href="/categories/My-bootloader/"><div class='name'>My bootloader</div><div class='badge'>(1)</div></a></li>
+        
+          <li><a class="flat-box" title="/categories/Shell/" href="/categories/Shell/"><div class='name'>Shell</div><div class='badge'>(4)</div></a></li>
+        
+          <li><a class="flat-box" title="/categories/U-boot/" href="/categories/U-boot/"><div class='name'>U-boot</div><div class='badge'>(1)</div></a></li>
+        
+          <li><a class="flat-box" title="/categories/makefile/" href="/categories/makefile/"><div class='name'>makefile</div><div class='badge'>(3)</div></a></li>
+        
+          <li><a class="flat-box" title="/categories/%E6%80%BB%E7%BA%BF%E5%8D%8F%E8%AE%AE/" href="/categories/%E6%80%BB%E7%BA%BF%E5%8D%8F%E8%AE%AE/"><div class='name'>总线协议</div><div class='badge'>(2)</div></a></li>
+        
+          <li><a class="flat-box" title="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/"><div class='name'>操作系统</div><div class='badge'>(1)</div></a></li>
+        
+          <li><a class="flat-box" title="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/"><div class='name'>计算机网络</div><div class='badge'>(3)</div></a></li>
+        
+      </ul>
+    </div>
+  </section>
+
+
+            
+          
+        
+          
+          
+        
+          
+          
+        
+      
+        
+          
+          
+        
+          
+          
+        
+          
+          
+            
+              
+  <section class='widget tagcloud'>
+    
+<header class='pure'>
+  <div><i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;热门标签</div>
+  
+    <a class="rightBtn"
+    
+      rel="nofollow"
+    
+    
+    href="/blog/tags/"
+    title="blog/tags/">
+    <i class="fas fa-expand-arrows-alt fa-fw"></i></a>
+  
+</header>
+
+    <div class='content pure'>
+      <a href="/tags/IIC/" style="font-size: 14px; color: #999">IIC</a> <a href="/tags/RTOS/" style="font-size: 14px; color: #999">RTOS</a> <a href="/tags/SPI/" style="font-size: 14px; color: #999">SPI</a> <a href="/tags/Shell/" style="font-size: 24px; color: #555">Shell</a> <a href="/tags/bootloader/" style="font-size: 17.33px; color: #828282">bootloader</a> <a href="/tags/makefile/" style="font-size: 20.67px; color: #6c6c6c">makefile</a> <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" style="font-size: 20.67px; color: #6c6c6c">计算机网络</a>
+    </div>
+  </section>
+
+
+            
+          
+        
+          
+          
+        
+      
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+      
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+      
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+            
+              
+
+
+  <section class='widget music'>
+    
+<header class='pure'>
+  <div><i class="fas fa-compact-disc fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;最近在听</div>
+  
+    <a class="rightBtn"
+    
+      rel="external nofollow noopener noreferrer"
+    
+    
+      target="_blank"
+    
+    href="https://music.163.com/#/user/home?id=20076790"
+    title="https://music.163.com/#/user/home?id=20076790">
+    <i class="far fa-heart fa-fw"></i></a>
+  
+</header>
+
+    <div class='content pure'>
+      
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer@1.7.0/dist/APlayer.min.css">
+  <div class="aplayer"
+    data-theme="#1BCDFC"
+    
+    
+    data-mode="random"
+    data-server="netease"
+    data-type="playlist"
+    data-id="17907132"
+    data-volume="0.7">
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/aplayer@1.7.0/dist/APlayer.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/meting@1.1.0/dist/Meting.min.js"></script>
+
+
+    </div>
+  </section>
+
+
+            
+          
+        
+      
+    
+
+  
+</aside>
+
+<footer id="footer" class="clearfix">
+  
+  
+    <div class="social-wrapper">
+      
+        
+          <a href="/laihuihang@foxmail.com"
+            class="social fas fa-envelope flat-btn"
+            target="_blank"
+            rel="external nofollow noopener noreferrer">
+          </a>
+        
+      
+        
+          <a href="https://github.com/laihuihang"
+            class="social fab fa-github flat-btn"
+            target="_blank"
+            rel="external nofollow noopener noreferrer">
+          </a>
+        
+      
+        
+          <a href="https://music.163.com/#/user/home?id=20076790"
+            class="social fas fa-headphones-alt flat-btn"
+            target="_blank"
+            rel="external nofollow noopener noreferrer">
+          </a>
+        
+      
+    </div>
+  
+  <br>
+  <div><p>博客内容遵循 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank" rel="noopener">署名-非商业性使用-相同方式共享 4.0 国际 (CC BY-NC-SA 4.0) 协议</a></p>
+</div>
+  <div>
+    本站使用
+    <a href="https://xaoxuu.com/wiki/material-x/" target="_blank" class="codename">Material X</a>
+    作为主题
+    
+      ，
+      总访问量为
+      <span id="busuanzi_value_site_pv"><i class="fas fa-spinner fa-spin fa-fw" aria-hidden="true"></i></span>
+      次
+    
+    。
+  </div>
+</footer>
+<script>setLoadingBarProgress(80);</script>
+
+
+      <script>setLoadingBarProgress(60);</script>
+    </div>
+    <a class="s-top fas fa-arrow-up fa-fw" href='javascript:void(0)'></a>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+
+  <script>
+    
+    var SEARCH_SERVICE = "hexo" || "hexo";
+    var ROOT = "/" || "/";
+    if (!ROOT.endsWith('/')) ROOT += '/';
+  </script>
+
+<script src="//instant.page/1.2.2" type="module" integrity="sha384-2xV8M5griQmzyiY3CDqh1dn4z3llDVqZDqzjzcY+jCBCk/a5fXJmuZ/40JJAPeoU"></script>
+
+
+  <script src="https://cdn.jsdelivr.net/npm/scrollreveal@4.0.5/dist/scrollreveal.min.js"></script>
+  <script type="text/javascript">
+    $(function() {
+      const $reveal = $('.reveal');
+      if ($reveal.length === 0) return;
+      const sr = ScrollReveal({ distance: 0 });
+      sr.reveal('.reveal');
+    });
+  </script>
+
+
+  <script src="https://cdn.jsdelivr.net/npm/node-waves@0.7.6/dist/waves.min.js"></script>
+  <script type="text/javascript">
+    $(function() {
+      Waves.attach('.flat-btn', ['waves-button']);
+      Waves.attach('.float-btn', ['waves-button', 'waves-float']);
+      Waves.attach('.float-btn-light', ['waves-button', 'waves-float', 'waves-light']);
+      Waves.attach('.flat-box', ['waves-block']);
+      Waves.attach('.float-box', ['waves-block', 'waves-float']);
+      Waves.attach('.waves-image');
+      Waves.init();
+    });
+  </script>
+
+
+  <script async src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-busuanzi@2.3/js/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+<script src="/js/app.js"></script>
+
+
+
+  
+<script src="/js/search.js"></script>
+
+
+
+
+
+
+
+<!-- 复制 -->
+<script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
+<script>
+  let COPY_SUCCESS = "复制成功";
+  let COPY_FAILURE = "复制失败";
+  /*页面载入完成后，创建复制按钮*/
+  !function (e, t, a) {
+    /* code */
+    var initCopyCode = function(){
+      var copyHtml = '';
+      copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
+      copyHtml += '  <i class="fa fa-copy"></i><span>复制</span>';
+      copyHtml += '</button>';
+      $(".highlight .code pre").before(copyHtml);
+      var clipboard = new ClipboardJS('.btn-copy', {
+        target: function(trigger) {
+          return trigger.nextElementSibling;
+        }
+      });
+
+      clipboard.on('success', function(e) {
+        //您可以加入成功提示
+        console.info('Action:', e.action);
+        console.info('Text:', e.text);
+        console.info('Trigger:', e.trigger);
+        success_prompt(COPY_SUCCESS);
+        e.clearSelection();
+      });
+      clipboard.on('error', function(e) {
+        //您可以加入失败提示
+        console.error('Action:', e.action);
+        console.error('Trigger:', e.trigger);
+        fail_prompt(COPY_FAILURE);
+      });
+    }
+    initCopyCode();
+
+  }(window, document);
+
+  /**
+   * 弹出式提示框，默认1.5秒自动消失
+   * @param message 提示信息
+   * @param style 提示样式，有alert-success、alert-danger、alert-warning、alert-info
+   * @param time 消失时间
+   */
+  var prompt = function (message, style, time)
+  {
+      style = (style === undefined) ? 'alert-success' : style;
+      time = (time === undefined) ? 1500 : time*1000;
+      $('<div>')
+          .appendTo('body')
+          .addClass('alert ' + style)
+          .html(message)
+          .show()
+          .delay(time)
+          .fadeOut();
+  };
+
+  // 成功提示
+  var success_prompt = function(message, time)
+  {
+      prompt(message, 'alert-success', time);
+  };
+
+  // 失败提示
+  var fail_prompt = function(message, time)
+  {
+      prompt(message, 'alert-danger', time);
+  };
+
+  // 提醒
+  var warning_prompt = function(message, time)
+  {
+      prompt(message, 'alert-warning', time);
+  };
+
+  // 信息提示
+  var info_prompt = function(message, time)
+  {
+      prompt(message, 'alert-info', time);
+  };
+
+</script>
+
+
+<!-- fancybox -->
+<script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+<script>
+  let LAZY_LOAD_IMAGE = "";
+  $(".article-entry").find("fancybox").find("img").each(function () {
+      var element = document.createElement("a");
+      $(element).attr("data-fancybox", "gallery");
+      $(element).attr("href", $(this).attr("src"));
+      /* 图片采用懒加载处理时,
+       * 一般图片标签内会有个属性名来存放图片的真实地址，比如 data-original,
+       * 那么此处将原本的属性名src替换为对应属性名data-original,
+       * 修改如下
+       */
+       if (LAZY_LOAD_IMAGE) {
+         $(element).attr("href", $(this).attr("data-original"));
+       }
+      $(this).wrap(element);
+  });
+</script>
+
+
+
+
+
+  <script>setLoadingBarProgress(100);</script>
+</body>
+</html>
