@@ -284,7 +284,7 @@
       <a class='notlink'>
         <i class="fas fa-keyboard" aria-hidden="true"></i>
         <p>字数统计:</p>
-        <p>822字</p>
+        <p>816字</p>
       </a>
     </div>
     <div class="new-meta-item readtime">
@@ -313,7 +313,7 @@
 
     <section class="article typo">
       <div class="article-entry" itemprop="articleBody">
-        <h1 id="前中后序遍历"><a href="#前中后序遍历" class="headerlink" title="前中后序遍历"></a>前中后序遍历</h1><h2 id="递归"><a href="#递归" class="headerlink" title="递归"></a>递归</h2><p>众所周知，前中后序用递归方法来实现非常的简洁易懂，但是在面试中面试官大概率不会让你用递归算法来实现前中后序遍历，第一步我们先通过简单的递归来实现前中后序遍历。</p>
+        <h2 id="递归"><a href="#递归" class="headerlink" title="递归"></a>递归</h2><p>众所周知，前中后序用递归方法来实现非常的简洁易懂，但是在面试中面试官大概率不会让你用递归算法来实现前中后序遍历，第一步我们先通过简单的递归来实现前中后序遍历。</p>
 <h3 id="前序遍历"><a href="#前序遍历" class="headerlink" title="前序遍历"></a>前序遍历</h3><figure class="highlight xquery"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">void trackback(TreeNode*<span class="built_in"> root</span>, vector<span class="xml"><span class="tag">&lt;<span class="name">int</span>&gt;</span>&amp; vec)</span></span><br><span class="line"><span class="xquery">&#123;</span></span><br><span class="line"><span class="xquery">    <span class="keyword">if</span><span class="built_in">(root</span> == NULL)</span></span><br><span class="line"><span class="xquery">        <span class="keyword">return</span>;</span></span><br><span class="line"><span class="xquery">    vec.push_back<span class="built_in">(root</span>-&gt;val);</span></span><br><span class="line"><span class="xquery">    trackback<span class="built_in">(root</span>-&gt;left);</span></span><br><span class="line"><span class="xquery">    trackback<span class="built_in">(root</span>-&gt;right);</span></span><br><span class="line"><span class="xquery">&#125;</span></span><br></pre></td></tr></table></figure>
 <h3 id="中序遍历"><a href="#中序遍历" class="headerlink" title="中序遍历"></a>中序遍历</h3><figure class="highlight xquery"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">void trackback(TreeNode*<span class="built_in"> root</span>, vector<span class="xml"><span class="tag">&lt;<span class="name">int</span>&gt;</span>&amp; vec)</span></span><br><span class="line"><span class="xquery">&#123;</span></span><br><span class="line"><span class="xquery">    <span class="keyword">if</span><span class="built_in">(root</span> == NULL)</span></span><br><span class="line"><span class="xquery">        <span class="keyword">return</span>;</span></span><br><span class="line"><span class="xquery">    trackback<span class="built_in">(root</span>-&gt;left);</span></span><br><span class="line"><span class="xquery">    vec.push_back<span class="built_in">(root</span>-&gt;val);</span></span><br><span class="line"><span class="xquery">    trackback<span class="built_in">(root</span>-&gt;right);</span></span><br><span class="line"><span class="xquery">&#125;</span></span><br></pre></td></tr></table></figure>
 <h3 id="后序遍历"><a href="#后序遍历" class="headerlink" title="后序遍历"></a>后序遍历</h3><figure class="highlight xquery"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">void trackback(TreeNode*<span class="built_in"> root</span>, vector<span class="xml"><span class="tag">&lt;<span class="name">int</span>&gt;</span>&amp; vec)</span></span><br><span class="line"><span class="xquery">&#123;</span></span><br><span class="line"><span class="xquery">    <span class="keyword">if</span><span class="built_in">(root</span> == NULL)</span></span><br><span class="line"><span class="xquery">        <span class="keyword">return</span>;</span></span><br><span class="line"><span class="xquery">    trackback<span class="built_in">(root</span>-&gt;left);</span></span><br><span class="line"><span class="xquery">    trackback<span class="built_in">(root</span>-&gt;right);</span></span><br><span class="line"><span class="xquery">    vec.push_back<span class="built_in">(root</span>-&gt;val);</span></span><br><span class="line"><span class="xquery">&#125;</span></span><br></pre></td></tr></table></figure>
@@ -342,7 +342,7 @@
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-09-04T18:38:29+08:00">
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-09-04T18:41:00+08:00">
   <a class='notlink'>
     <i class="fas fa-clock" aria-hidden="true"></i>
     <p>更新于 2020年9月4日</p>
