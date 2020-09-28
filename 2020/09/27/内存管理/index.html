@@ -378,7 +378,8 @@
 <p>glibc的不足：</p>
 <ul>
 <li>后分配的内存先释放,因为 ptmalloc 收缩内存是从 top chunk 开始,如果与 top chunk 相邻的 chunk 不能释放, top chunk 以下的 chunk 都无法释放。</li>
-<li>多线程锁开销大， 需要避免多线程频繁分配释放。<br>内存从thread的分配区中分配， 内存不能从一个分配区移动到另一个分配区， 就是说如果多线程使用内存不均衡，容易导致内存的浪费。比如说线程1使用了300M内存，完成任务后glibc没有释放给操作系统，线程2开始创建了一个新的arena，但是线程1的300M却不能用了。</li>
+<li>多线程锁开销大， 需要避免多线程频繁分配释放。</li>
+<li>内存从thread的分配区中分配， 内存不能从一个分配区移动到另一个分配区， 就是说如果多线程使用内存不均衡，容易导致内存的浪费。比如说线程1使用了300M内存，完成任务后glibc没有释放给操作系统，线程2开始创建了一个新的arena，但是线程1的300M却不能用了。</li>
 <li>每个chunk至少8字节的开销很大</li>
 <li>不定期分配长生命周期的内存容易造成内存碎片，不利于回收。 64位系统最好分配32M以上内存，这是使用mmap的阈值。</li>
 </ul>
@@ -397,7 +398,7 @@
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-09-28T14:41:09+08:00">
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-09-28T14:57:39+08:00">
   <a class='notlink'>
     <i class="fas fa-clock" aria-hidden="true"></i>
     <p>更新于 2020年9月28日</p>
